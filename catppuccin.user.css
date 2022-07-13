@@ -1,0 +1,573 @@
+/* ==UserStyle==
+@name           DeepL Catppuccin
+@namespace      github.com/catppuccin/deepl
+@version        0.0.1
+@description    Soothing pastel theme for DeepL
+@author         Catppuccin
+@updateURL      https://github.com/catppuccin/deepl/raw/main/catppuccin.user.css
+@preprocessor   stylus
+
+@var select theme "Theme" ["Latte", "Frappe", "Macchiato", "Mocha*"]
+
+==/UserStyle== */
+
+@-moz-document domain("deepl.com") {
+    if (theme=="Latte") {
+        $rosewater = #dc8a78;
+        $flamingo = #dd7878;
+        $pink = #ea76cb;
+        $mauve = #8839ef;
+        $red = #d20f39;
+        $maroon = #e64553;
+        $peach = #fe640b;
+        $yellow = #df8e1d;
+        $green = #40a02b;
+        $teal = #179299;
+        $sky = #04a5e5;
+        $sapphire = #209fb5;
+        $blue = #1e66f5;
+        $lavender = #7287fd;
+        $text = #4c4f69;
+        $subtext1 = #5c5f77;
+        $subtext0 = #6c6f85;
+        $overlay2 = #7c7f93;
+        $overlay1 = #8c8fa1;
+        $overlay0 = #9ca0b0;
+        $surface2 = #acb0be;
+        $surface1 = #bcc0cc;
+        $surface0 = #ccd0da;
+        $base = #eff1f5;
+        $mantle = #e6e9ef;
+        $crust = #dce0e8;
+    }
+
+    else if (theme=="Frappe") {
+        $rosewater = #f2d5cf;
+        $flamingo = #eebebe;
+        $pink = #f4b8e4;
+        $mauve = #ca9ee6;
+        $red = #e78284;
+        $maroon = #ea999c;
+        $peach = #ef9f76;
+        $yellow = #e5c890;
+        $green = #a6d189;
+        $teal = #81c8be;
+        $sky = #99d1db;
+        $sapphire = #85c1dc;
+        $blue = #8caaee;
+        $lavender = #babbf1;
+        $text = #c6d0f5;
+        $subtext1 = #b5bfe2;
+        $subtext0 = #a5adce;
+        $overlay2 = #949cbb;
+        $overlay1 = #838ba7;
+        $overlay0 = #737994;
+        $surface2 = #626880;
+        $surface1 = #51576d;
+        $surface0 = #414559;
+        $base = #303446;
+        $mantle = #292c3c;
+        $crust = #232634;
+    }
+
+    else if (theme=="Macchiato") {
+        $rosewater = #f4dbd6;
+        $flamingo = #f0c6c6;
+        $pink = #f5bde6;
+        $mauve = #c6a0f6;
+        $red = #ed8796;
+        $maroon = #ee99a0;
+        $peach = #f5a97f;
+        $yellow = #eed49f;
+        $green = #a6da95;
+        $teal = #8bd5ca;
+        $sky = #91d7e3;
+        $sapphire = #7dc4e4;
+        $blue = #8aadf4;
+        $lavender = #b7bdf8;
+        $text = #cad3f5;
+        $subtext1 = #b8c0e0;
+        $subtext0 = #a5adcb;
+        $overlay2 = #939ab7;
+        $overlay1 = #8087a2;
+        $overlay0 = #6e738d;
+        $surface2 = #5b6078;
+        $surface1 = #494d64;
+        $surface0 = #363a4f;
+        $base = #24273a;
+        $mantle = #1e2030;
+        $crust = #181926;
+    }
+
+    else if (theme=="Mocha") {
+        $rosewater = #f5e0dc
+        $flamingo = #f2cdcd
+        $pink = #f5c2e7
+        $mauve = #cba6f7
+        $red = #f38ba8
+        $maroon = #eba0ac
+        $peach = #fab387
+        $yellow = #f9e2af
+        $green = #a6e3a1
+        $teal = #94e2d5
+        $sky = #89dceb
+        $sapphire = #74c7ec
+        $lavender = #b4befe
+        $blue = #89b4fa
+        $text = #cdd6f4
+        $subtext1 = #bac2de
+        $subtext0 = #a6adc8
+        $overlay2 = #9399b2
+        $overlay1 = #7f849c
+        $overlay0 = #6c7086
+        $surface2 = #585b70
+        $surface1 = #45475a
+        $surface0 = #313244
+        $base = #1e1e2e
+        $mantle = #181825
+        $crust = #11111b
+    }
+
+    body,
+    .dl_body,
+    .dl_body--text_page {
+        background-color: $base;
+        color: $text;
+    }
+
+    .dl_body--redesign {
+        background-color: $base !important;
+    }
+
+    /* Header */
+
+    .dl_header, .dl_header::before {
+        background-color: $mantle;
+    }
+
+    .dl_header_menu_v2__links__item, .dl_header_menu_v2__links__item:visited,
+    .dl_header_menu_v2__links__item:active,
+    .dl_header_menu_v2__links__item:focus {
+        color: $sapphire;
+    }
+
+    .dl_header_menu_v2__links__item:not(.nohover):hover,
+    .dl_header_menu_v2__links__item.is-active {
+        border-bottom: 3px solid $lavender;
+        color: $lavender;
+    }
+
+    .dl_header_menu_v2__links__item.dl_translator_link:not(.nohover):hover {
+        border-bottom: 3px solid $lavender;
+        color: $sapphire;
+    }
+
+    .dl_headerMenu__freeBadge {
+        background-color: $teal;
+        color: $base;
+    }
+
+    .dl_headerMenu__proButton {
+        background-color: $blue;
+        color: $base;
+
+        &:hover {
+            background-color: darken($blue, 25%);
+            color: $base;
+        }
+    }
+
+    .dl_header_menu_v2__login_button_simple > button {
+        color: $sapphire;
+
+        &:hover {
+            color: darken($sapphire, 25%);
+        }
+    }
+
+    .dl_header_menu_v2__buttons__menu,
+    .dl_header_menu_v2__buttons__menu > button,
+    .dl_header_menu_v2__buttons__menu > button::before, .dl_header_menu_v2__buttons__menu > button::after {
+        color: $sapphire;
+    }
+
+    /* Main */
+
+    /* Buttons */
+
+    .lmt__docTrans-tab-container [class^="cardButton"] {
+        background-color: $surface0;
+        border-color: $overlay0;
+
+        [class^="textLower"] {
+            color: $subtext0;
+        }
+
+        [class^="textUpper"] {
+            color: $sapphire;
+        }
+
+        [class^="logo"] {
+            color: $sapphire;
+            stroke: $sapphire;
+            fill: $sapphire;
+        }
+
+        &:not([class*="active"]):hover {
+            background-color: lighten($surface0, 20%);
+        }
+    }
+
+    .lmt__docTrans-tab-container [class*="active"] {
+        [class^="textUpper"] {
+            color: $lavender;
+        }
+
+        [class^="logo"] {
+            color: $lavender;
+            stroke: $lavender;
+            fill: $lavender;
+        }
+
+        [class^="innerLower"] {
+            background-color: $sapphire;
+        }
+    }
+
+    /* Input containers */
+
+    /* Headers */
+
+    .integratedLanguageSelectors .lmt--web .lmt__sides_container .lmt__side_container {
+        border-color: $overlay0;
+    }
+
+    .integratedLanguageSelectors .lmt--web .lmt__sides_container .lmt__language_container {
+         background: $surface0;
+    }
+
+    .lmt--web .lmt__language_select > .lmt__language_select__active strong,
+    .dl_body--redesign .lmt--web .lmt__language_select .lmt__language_select__active .lmt__language_select__opener,
+    .lmt--web .lmt__language_select__menu_three_columns_close_button,
+    .lmt__glossary_button .lmt__glossary_button_label {
+        color: $sapphire;
+    }
+
+    .lmt--web .lmt__language_select > .lmt__language_select__active:hover strong,
+    .lmt--web .lmt__language_select > .lmt__language_select__active:hover .lmt__language_select__opener {
+        color: $lavender;
+    }
+
+    .lmt__glossaryButton__desktop.switchedOn {
+        border-color: $sapphire;
+    }
+
+    .lmt__glossary_button .lmt__glossary_button_label:hover {
+        color: $lavender;
+    }
+
+    .lmt__glossary_onOffSwitch_container [class*="label"] {
+        --inlineLabelColor: $base;
+        --background: $overlay0;
+    }
+
+    .lmt__glossary_onOffSwitch_container [class*="label"] [class*="toggle"] [class*="knob"] {
+        background: $base;
+    }
+
+    .lmt__glossary_onOffSwitch_container [class*="label"][class*="selected"] {
+        --background: $green;
+        --backgroundHover: darken($green, 20%);
+    }
+
+    /* Main containers */
+
+    .integratedLanguageSelectors .dl_translator_page_container .lmt--web .lmt__text .lmt__textarea_container,
+	.integratedLanguageSelectors .lmt--web .lmt__sides_container .lmt__side_container--target .lmt__language_container_switch {
+        border-color: $overlay0 !important;
+        background: $surface0 !important;
+        color: $text;
+    }
+
+    .lmt--web .lmt__textarea {
+        color: $text;
+    }
+
+    .lmt--web .lmt__translations_as_text h4 {
+        color: $subtext1;
+    }
+
+    ul > .lmt__translations_as_text__item button {
+        color: $text;
+    }
+
+    .lmt--showing_alternatives .lmt__translations_as_text::before,
+    .lmt--web .lmt__translations_as_text h4::before {
+        border-top: 1px solid $subtext0;
+    }
+
+    .integratedLanguageSelectors .lmt--web .lmt__sides_container.lmt__sides_container--focus_source .lmt__side_container--source,
+    .integratedLanguageSelectors .lmt--web .lmt__sides_container.lmt__sides_container--focus_target .lmt__side_container--target {
+        border-color: $sapphire !important;
+    }
+
+    .lmt__source_textarea_overlay .lmt__source_textarea_overlay__sentence--active {
+        color: $text;
+        background-color: $surface0;
+    }
+
+    .lmt--web .lmt__textarea_container .lmt__inner_textarea_container {
+        background: $surface0 !important;
+    }
+
+    .lmt__textarea_container {
+        [class*="button"] {
+            svg {
+                color: $sapphire;
+            }
+
+            &:hover:enabled,
+            &:active:enabled,
+            &[class*=tabbed] {
+                background-color: $surface1;
+            }
+        }
+    }
+
+    .lmt--web .lmt__language_container .lmt__language_container_switch svg > path {
+        stroke: $sapphire;
+    }
+
+    .lmt--web .lmt__language_container .lmt__language_container_switch:hover svg > path, .lmt--web .lmt__language_container .lmt__language_container_switch:focus svg > path {
+        stroke: $lavender;
+    }
+
+    /* Dictionary container */
+
+    .lmt__dict.lmt--is-dict-ready .lmt__dict__inner,
+    .lmt__dict .lmt__dict__empty_state.lmt__dict__placeholder__shown {
+        border: 1px solid $overlay0;
+        background: $surface0;
+
+        [class*="buttonContainer"] button {
+            color: $sapphire;
+            stroke: $sapphire;
+
+            &:hover svg {
+                color: $lavender;
+                stroke: $lavender;
+            }
+        }
+
+    }
+
+    .lmt__dict .lmt__dict__empty_state {
+        color: $subtext1;
+    }
+
+    .lmt__dict .tag_lemma a {
+        color: $sapphire;
+    }
+
+    .lmt__dict .tag_trans {
+        color: $subtext1;
+    }
+
+    .lmt__dict .notascommon {
+        color: $subtext0;
+    }
+
+    /* Languages */
+
+    [class*="form"] [class*="submit"]:disabled {
+    	background: $sapphire;
+    	color: $base;
+    	filter: brightness(.8);
+	}
+
+	.lmt__glossary_editor_langPairHeadline {
+    	color: $text;
+    	border-bottom: 1px solid $overlay1;
+	}
+
+	.lmt__glossary_editorRow {
+    	color: $text;
+	}
+
+	.lmt__glossary_arrowRightWrapper .lmt__glossary_arrowRight {
+		border-bottom: 3px solid $subtext0;
+		border-right: 3px solid $subtext0;
+	}
+
+	.lmt__glossary_editorRow .iconButton {
+		fill: $subtext0;
+	}
+
+	.lmt__language_select__menu.lmt__language_select__menu_three_columns {
+		background-color: $surface0;
+		border: 1px solid $overlay0;
+	}
+
+	.flex-1 {
+		background: $surface0;
+		color: $subtext0;
+	}
+
+	.lmt__language_select__menu.lmt__language_select__menu_three_columns .lmt__language_wrapper .lmt__language_select_column {
+		border-right: 1px solid $overlay1;
+	}
+
+	.lmt__language_select__menu.lmt__language_select__menu_three_columns .lmt__language_wrapper .lmt__language_select_column button .tick {
+		border-bottom: 2px solid $sapphire;
+		border-right: 2px solid $sapphire;
+	}
+
+	.lmt__language_select_column span {
+		color: $text;
+	}
+
+	/* Glossary */
+
+	.lmt__glossary_editor {
+		background-color: $surface1;
+		color: $text;
+		border: 1px solid $sapphire;
+	}
+
+	.lmt__glossary_editor_mainBar {
+		background-color: $sapphire;
+		color: $base;
+	}
+
+	.lmt__glossary_editor_mainBar .lmt__glossary_editorClose {
+		color: $base;
+	}
+
+	.lmt__glossary_editor .lmt__glossary_editor_glossaryMultiple {
+		background-color: $surface0;
+	}
+
+	.lmt__glossary_editor .lmt__glossary_editor_glossaryMultiple .lmt__glossary_editor_glossarySelect .lmt__glossary_editor_glossaryNameWrapper .lmt__glossary_editor_glossaryName {
+		color: $text;
+	}
+
+	.lmt__glossary_editor .lmt__glossary_editor_glossaryMultiple .lmt__glossary_editor_glossarySelect .lmt__glossary_editor_glossaryNameWrapper .lmt__glossary_editor_glossarySelectChevron.lmt__glossary_arrowDown {
+		border-bottom: 2px solid $text;
+		border-right: 2px solid $text;
+	}
+
+	.lmt__glossary_editor .lmt__glossary_editor_glossaryMultiple .lmt__glossary_editor_glossaryAddNewWrapper {
+		border-left: 1px solid $text;
+	}
+
+	.lmt__glossary_editor .lmt__glossary_editor_glossaryMultiple .lmt__glossary_editor_glossaryAddNewWrapper .lmt__glossary_editor_glossaryAddNew, .lmt__glossary_editor .lmt__glossary_editor_glossaryMultiple .lmt__glossary_editor_glossaryAddNewWrapper .lmt__glossary_editor_glossaryDownload {
+		color: $sapphire;
+	}
+
+	[class^="form"] {
+		background: $surface0;
+	}
+
+	[class*="wrapper"] [class*="controls"] [class*="input"],
+	[class*="wrapper"] [class*="button"] {
+		--input-background: $surface1;
+		--button-background: $surface1;
+		--button-color: $text;
+		--button-border-color: $overlay1;
+		--input-border-color: $overlay1;
+		--input-color: $subtext1;
+	}
+
+    /* Tooltip and pop-ups */
+
+    .lmt__glossary_dialog {
+        background: $surface1;
+        color: $text;
+    }
+
+    .lmt__edit_text_popup,
+    .lmt__edit_text_popup ul {
+        background: $surface1;
+    }
+
+    .lmt__edit_text_popup li {
+        color: $text;
+        border-bottom: 1px solid $overlay1;
+    }
+
+    .lmt__edit_text_popup .lmt__edit_text_popup__entry--active {
+        background: alpha($yellow, .3);
+    }
+
+    /* Quotes */
+
+    .lmt_quote__inner {
+        color: $text;
+        background-color: $surface0;
+    }
+
+    .lmt_quote__text,
+    .lmt_quote__source {
+        color: $text;
+    }
+
+    .lmt_quote__source a {
+        color: $sapphire;
+    }
+
+    /* Footer */
+
+    .eSEOtericText {
+        color: $overlay1;
+    }
+
+    [class^="footerOuterContainer"] {
+        background-color: $mantle;
+    }
+
+    [class^="footerOuterContainer"] [class^="footerContainer"] [class^="footerContentContainer"] [class^="linksContainer"] [class^="linkList"] li {
+        &:not(:first-of-type) a {
+            color: $subtext1 !important;
+        }
+
+        [class^="badgeNew"] {
+            background-color: $teal;
+            color: $base;
+        }
+    }
+
+    [class^="languageSelector"] {
+        select {
+            color: $subtext1
+        }
+
+        &::after {
+            fill: $subtext1;
+            color: $subtext1;
+            stroke: $subtext1;
+            opacity: 0.7;
+        }
+
+        option {
+            background: $surface1;
+        }
+    }
+
+    .lmt_quotes_nav_entry {
+        background-color: $surface2;
+    }
+
+    .lmt_quotes_nav_entry--active {
+        background-color: $sapphire;
+    }
+
+    /* Images */
+
+    .dl_header_menu_v2__logo img,
+    .dl_translator_link_container img,
+    .lmt_quote__inner::before,
+    .dl_navigate_away img {
+            filter: brightness(230%);
+
+    }
+}
