@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           DeepL Catppuccin
 @namespace      github.com/catppuccin/deepl
-@version        0.0.1
+@version        0.0.2
 @description    Soothing pastel theme for DeepL
 @author         Catppuccin
 @updateURL      https://github.com/catppuccin/deepl/raw/main/catppuccin.user.css
@@ -141,8 +141,13 @@
 
     /* Header */
 
-    .dl_header, .dl_header::before {
-        background-color: $mantle;
+    .dl_header,
+    .dl_header::before {
+        background-color: $mantle !important;
+    }
+
+    .lmt__stickyMenubar .dl_header--sticky {
+        transition: unset;
     }
 
     .dl_header_menu_v2__links__item, .dl_header_menu_v2__links__item:visited,
@@ -181,7 +186,7 @@
         color: $sapphire;
 
         &:hover {
-            color: darken($sapphire, 25%);
+            color: $lavender;
         }
     }
 
@@ -189,6 +194,10 @@
     .dl_header_menu_v2__buttons__menu > button,
     .dl_header_menu_v2__buttons__menu > button::before, .dl_header_menu_v2__buttons__menu > button::after {
         color: $sapphire;
+    }
+
+    .dl_header_menu_v2__buttons__menu > button:hover::before, .dl_header_menu_v2__buttons__menu > button:hover::after {
+        color: $lavender;
     }
 
     /* Main */
@@ -289,7 +298,8 @@
         color: $text;
     }
 
-    .lmt--web .lmt__textarea {
+    .lmt--web .lmt__textarea,
+    .lmt__textarea_container textarea {
         color: $text;
     }
 
@@ -303,7 +313,7 @@
 
     .lmt--showing_alternatives .lmt__translations_as_text::before,
     .lmt--web .lmt__translations_as_text h4::before {
-        border-top: 1px solid $subtext0;
+        border-top: 1px solid $overlay0;
     }
 
     .integratedLanguageSelectors .lmt--web .lmt__sides_container.lmt__sides_container--focus_source .lmt__side_container--source,
@@ -342,6 +352,33 @@
         stroke: $lavender;
     }
 
+    .lmt--web .lmt__inner_textarea_container .lmt__textarea_dummydiv {
+        background-color: $surface0;
+    }
+
+    /* Doucment container */
+
+    .docTrans_document {
+        [class*="panel"] {
+            background-color: $surface0;
+            border-color: $overlay0;
+        }
+    }
+
+    .lmt--web .docTrans__help_popup {
+        background-color: $surface0;
+
+        [class*="button"] {
+            color: $base;
+            background-color: $sapphire;
+            border-color: $sapphire;
+        }
+    }
+
+    .dl_help-popup_assist-text {
+        color: $subtext1;
+    }
+
     /* Dictionary container */
 
     .lmt__dict.lmt--is-dict-ready .lmt__dict__inner,
@@ -361,11 +398,21 @@
 
     }
 
-    .lmt__dict .lmt__dict__empty_state {
+    .lmt__dict .lmt__dict__empty_state,
+    .lmt__dict .isForeignTerm .tag_lemma,
+    .lmt__dict .isForeignTerm .tag_lemma a,
+    .lmt__dict .isForeignTerm .tag_s,
+    .lmt__dict .isForeignTerm .tag_s a,
+    .lmt__dict .isForeignTerm .tag_trans_src_context,
+    .lmt__dict .sep {
         color: $subtext1;
     }
 
-    .lmt__dict .tag_lemma a {
+    .lmt__dict .tag_lemma a,
+    .lmt__dict .isForeignTerm .tag_trans,
+    .lmt__dict .isForeignTerm .tag_trans a,
+    .lmt__dict .isForeignTerm .tag_t,
+    .lmt__dict .isForeignTerm .tag_t a {
         color: $sapphire;
     }
 
@@ -457,7 +504,7 @@
 	}
 
 	.lmt__glossary_editor .lmt__glossary_editor_glossaryMultiple .lmt__glossary_editor_glossaryAddNewWrapper {
-		border-left: 1px solid $text;
+		border-left: 1px solid $overlay1;
 	}
 
 	.lmt__glossary_editor .lmt__glossary_editor_glossaryMultiple .lmt__glossary_editor_glossaryAddNewWrapper .lmt__glossary_editor_glossaryAddNew, .lmt__glossary_editor .lmt__glossary_editor_glossaryMultiple .lmt__glossary_editor_glossaryAddNewWrapper .lmt__glossary_editor_glossaryDownload {
@@ -566,8 +613,39 @@
     .dl_header_menu_v2__logo img,
     .dl_translator_link_container img,
     .lmt_quote__inner::before,
-    .dl_navigate_away img {
-            filter: brightness(230%);
+    .dl_navigate_away img,
+    [class*="supportedIcons"] img {
+            filter: brightness(175%);
 
+    }
+
+    /* Menu */
+
+    [class^="menuContainer"] {
+        background-color: $surface1;
+
+        [class^="container"] a {
+            color: $text;
+        }
+
+        [class^="mainContent"] + [class^="mainContent"] {
+            border-top: thin solid $overlay1;
+
+            [class*="button"][class*="color_primary"] {
+                color: $sapphire;
+            }
+        }
+    }
+
+    [class*="closeButton_dark"] {
+        &::before, &::after {
+            background-color: $subtext1;
+        }
+
+        &:hover {
+            &::before, &::after {
+                background-color: $sapphire;
+            }
+        }
     }
 }
