@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           DeepL Catppuccin
 @namespace      github.com/catppuccin/deepl
-@version        0.0.2
+@version        0.0.3
 @description    Soothing pastel theme for DeepL
 @author         Catppuccin
 @updateURL      https://github.com/catppuccin/deepl/raw/main/catppuccin.user.css
@@ -354,6 +354,15 @@
 
     .lmt--web .lmt__inner_textarea_container .lmt__textarea_dummydiv {
         background-color: $surface0;
+    }
+
+    .lmt--active_translation_request.lmt--active_translation_request--with_target_has_content .lmt__side_container--target .lmt__inner_textarea_container {
+        animation: unset !important;
+        box-shadow: unset !important;
+    }
+
+    .lmt--web .lmt__textarea.lmt__textarea--inactive {
+        color: $overlay2 !important;
     }
 
     /* Doucment container */
