@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           DeepL Catppuccin
 @namespace      github.com/catppuccin/deepl
-@version        0.0.3
+@version        0.0.4
 @description    Soothing pastel theme for DeepL
 @author         Catppuccin
 @updateURL      https://github.com/catppuccin/deepl/raw/main/catppuccin.user.css
@@ -291,6 +291,10 @@
 
     /* Main containers */
 
+    .lmt--web .lmt__textarea_placeholder_text {
+        color: $overlay1;
+    }
+
     .integratedLanguageSelectors .dl_translator_page_container .lmt--web .lmt__text .lmt__textarea_container,
 	.integratedLanguageSelectors .lmt--web .lmt__sides_container .lmt__side_container--target .lmt__language_container_switch {
         border-color: $overlay0 !important;
@@ -365,6 +369,14 @@
         color: $overlay2 !important;
     }
 
+    #translator-source-clear-button:hover:enabled {
+        background-color: $surface2;
+
+        svg {
+            color: $sapphire;
+        }
+    }
+
     /* Doucment container */
 
     .docTrans_document {
@@ -394,6 +406,7 @@
     .lmt__dict .lmt__dict__empty_state.lmt__dict__placeholder__shown {
         border: 1px solid $overlay0;
         background: $surface0;
+        color: $overlay1;
 
         [class*="buttonContainer"] button {
             color: $sapphire;
@@ -407,7 +420,6 @@
 
     }
 
-    .lmt__dict .lmt__dict__empty_state,
     .lmt__dict .isForeignTerm .tag_lemma,
     .lmt__dict .isForeignTerm .tag_lemma a,
     .lmt__dict .isForeignTerm .tag_s,
@@ -484,7 +496,8 @@
 
 	/* Glossary */
 
-	.lmt__glossary_editor {
+	.lmt__glossary_editor,
+    [class*="modal"][dl-test="glossary-modal"] {
 		background-color: $surface1;
 		color: $text;
 		border: 1px solid $sapphire;
@@ -534,7 +547,53 @@
 		--input-color: $subtext1;
 	}
 
-    /* Tooltip and pop-ups */
+    [class*="modal"][dl-test="glossary-modal"] {
+        [class^="content"] {
+            color: $text;
+
+            .lmt__glossary_acceptButton {
+                background-color: $sapphire;
+                color: $base;
+
+                &:hover {
+                    background-color: $lavender;
+                    color: $base;
+                }
+            }
+        }
+
+        input::placeholder,
+        textarea::placeholder,
+        input:-ms-input-placeholder,
+        textarea:-ms-input-placeholder,
+        input::-moz-placeholder,
+        textarea::-moz-placeholder {
+            color: $subtext0;
+        }
+    }
+
+    .lmt_firstEntry-content .lmt__glossary_newEntry_inputSource,
+    .lmt_firstEntry-content .lmt__glossary_newEntry_inputTarget,
+    .lmt_firstEntry-content .lmt__glossary_newEntry_langButton {
+        background-color: $surface2;
+        border-color: $overlay2;
+    }
+
+    .lmt_firstEntry-content .lmt__glossary_newEntry_langButton {
+        color: $blue;
+    }
+
+    .lmt_firstEntry-content .lmt__glossary_newEntry_langButton .lmt__glossary_arrowRight {
+        color: $subtext0;
+        stroke: $subtext0;
+    }
+
+    .lmt_firstEntry-content .lmt__glossary_newEntry_langButton .lmt__glossary_arrowDown {
+        border-bottom: 2px solid $subtext0;
+        border-right: 2px solid $subtext0;
+    }
+
+    /* Tooltips and pop-ups */
 
     .lmt__glossary_dialog {
         background: $surface1;
@@ -553,6 +612,18 @@
 
     .lmt__edit_text_popup .lmt__edit_text_popup__entry--active {
         background: alpha($yellow, .3);
+    }
+
+    [style="display: contents;"] [class*="container"] {
+        [class*="hint"] {
+            border-color: $overlay1;
+            background-color: $surface1;
+
+            path {
+                stroke: $text;
+                color: $text;
+            }
+        }
     }
 
     /* Quotes */
