@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           DeepL Catppuccin
 @namespace      github.com/catppuccin/deepl
-@version        0.0.4
+@version        0.0.41
 @description    Soothing pastel theme for DeepL
 @author         Catppuccin
 @updateURL      https://github.com/catppuccin/deepl/raw/main/catppuccin.user.css
@@ -266,6 +266,10 @@
     .lmt--web .lmt__language_select > .lmt__language_select__active:hover .lmt__language_select__opener {
         color: $lavender;
     }
+
+	.lmt__glossaryButton__desktop {
+		border-color: $surface2;
+	}
 
     .lmt__glossaryButton__desktop.switchedOn {
         border-color: $sapphire;
