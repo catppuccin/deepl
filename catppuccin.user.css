@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           DeepL Catppuccin
 @namespace      github.com/catppuccin/deepl
-@version        0.1.1
+@version        0.1.2
 @description    Soothing pastel theme for DeepL
 @author         Catppuccin
 @updateURL      https://github.com/catppuccin/deepl/raw/main/catppuccin.user.css
@@ -11,10 +11,9 @@
 @var checkbox quotes "Remove Quotes" 0
 @var checkbox header "Remove Header" 0
 @var checkbox footer "Remove Footer" 0
-
 ==/UserStyle== */
 
-@-moz-document domain("deepl.com") {
+@-moz-document url-prefix("https://www.deepl.com/translator") {
     if (theme=="Latte") {
         $rosewater = #dc8a78;
         $flamingo = #dd7878;
@@ -103,32 +102,32 @@
     }
 
     else if (theme=="Mocha") {
-        $rosewater = #f5e0dc
-        $flamingo = #f2cdcd
-        $pink = #f5c2e7
-        $mauve = #cba6f7
-        $red = #f38ba8
-        $maroon = #eba0ac
-        $peach = #fab387
-        $yellow = #f9e2af
-        $green = #a6e3a1
-        $teal = #94e2d5
-        $sky = #89dceb
-        $sapphire = #74c7ec
-        $lavender = #b4befe
-        $blue = #89b4fa
-        $text = #cdd6f4
-        $subtext1 = #bac2de
-        $subtext0 = #a6adc8
-        $overlay2 = #9399b2
-        $overlay1 = #7f849c
-        $overlay0 = #6c7086
-        $surface2 = #585b70
-        $surface1 = #45475a
-        $surface0 = #313244
-        $base = #1e1e2e
-        $mantle = #181825
-        $crust = #11111b
+        $rosewater = #f5e0dc;
+        $flamingo = #f2cdcd;
+        $pink = #f5c2e7;
+        $mauve = #cba6f7;
+        $red = #f38ba8;
+        $maroon = #eba0ac;
+        $peach = #fab387;
+        $yellow = #f9e2af;
+        $green = #a6e3a1;
+        $teal = #94e2d5;
+        $sky = #89dceb;
+        $sapphire = #74c7ec;
+        $lavender = #b4befe;
+        $blue = #89b4fa;
+        $text = #cdd6f4;
+        $subtext1 = #bac2de;
+        $subtext0 = #a6adc8;
+        $overlay2 = #9399b2;
+        $overlay1 = #7f849c;
+        $overlay0 = #6c7086;
+        $surface2 = #585b70;
+        $surface1 = #45475a;
+        $surface0 = #313244;
+        $base = #1e1e2e;
+        $mantle = #181825;
+        $crust = #11111b;
     }
 
     .dl_body {
@@ -767,6 +766,101 @@
         }
     }
 
+    a {
+        &[aria-label="twitter"] {
+            -webkit-mask-image: url("https://static.deepl.com/img/_optimized/footer/twitterLogo.svghttps://static.deepl.com/img/_optimized/footer/twitterLogo.svg");
+             mask-image: url("https://static.deepl.com/img/_optimized/footer/twitterLogo.svg");
+        }
+
+        &[aria-label="facebook"] {
+            -webkit-mask-image: url("https://static.deepl.com/img/_optimized/footer/facebookLogo.svg");
+             mask-image: url("https://static.deepl.com/img/_optimized/footer/facebookLogo.svg");
+        }
+
+        &[aria-label="linkedin"] {
+            -webkit-mask-image: url("https://static.deepl.com/img/_optimized/footer/linkedinLogo.svg");
+             mask-image: url("https://static.deepl.com/img/_optimized/footer/linkedinLogo.svg");
+        }
+
+        &[aria-label="github"] {
+            -webkit-mask-image: url("https://static.deepl.com/img/_optimized/footer/githubLogo.svg");
+             mask-image: url("https://static.deepl.com/img/_optimized/footer/githubLogo.svg");
+        }
+
+        &[aria-label="twitter"],
+        &[aria-label="facebook"],
+        &[aria-label="linkedin"],
+        &[aria-label="github"] {
+            &::after {
+                content: "";
+                display: block;
+                position: absolute;
+                background: $subtext0;
+                -webkit-mask-size: 100%;
+                -webkit-mask-position: 100%;
+                mask-size: 100%;
+                mask-position: 100%;
+                top: 0;
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+
+    [class^="brandingContainer"] > .dl_navigate_away::after {
+        content: "";
+        mask-image: url("https://static.deepl.com/img/_optimized/footer/deeplLogo.svg");
+        -webkit-mask-image: url("https://static.deepl.com/img/_optimized/footer/deeplLogo.svg");
+        display: block;
+        position: relative;
+        background: $sapphire;
+        -webkit-mask-size: 100%;
+        -webkit-mask-position: 100%;
+        mask-size: 102px;
+        mask-position: 100%;
+        right: 58px;
+        width: 102px;
+        height: 35px;
+    }
+
+    [class^="languageSelectorContainer"]::after {
+        content: "";
+        mask-image: url("https://static.deepl.com/img/_optimized/footer/languageLogo.svg");
+        -webkit-mask-image: url("https://static.deepl.com/img/_optimized/footer/languageLogo.svg");
+        display: block;
+        position: relative;
+        background: $subtext0;
+        -webkit-mask-size: 100%;
+        -webkit-mask-position: 100%;
+        mask-size: 24px;
+        mask-position: 0;
+        right: 194px;
+        width: 24px;
+        height: 24px;
+    }
+
+    .dl_translator_link_container::after {
+        content: "";
+        mask-image: url("https://static.deepl.com/img/logo/DeepL_Text_darkBlue.svg");
+        -webkit-mask-image: url("https://static.deepl.com/img/logo/DeepL_Text_darkBlue.svg");
+        display: block;
+        position: absolute;
+        background: $sapphire;
+        -webkit-mask-size: 100%;
+        -webkit-mask-position: 0;
+        mask-size: 100%;
+        mask-position: 0;
+        left: 1;
+        width: 66px;
+        height: 18px;
+    }
+
+    @media only screen and (max-width: 650px) {
+        [class^="languageSelectorContainer"]::after {
+            right: 184px;
+        }
+    }
+
     /* Menu */
 
     [class^="menuContainer"] {
@@ -774,6 +868,10 @@
 
         [class^="container"] a {
             color: $text;
+
+            &:hover {
+                color: $sapphire;
+            }
         }
 
         [class^="mainContent"] + [class^="mainContent"] {
