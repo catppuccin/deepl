@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           DeepL Catppuccin
 @namespace      github.com/catppuccin/deepl
-@version        0.1.2
+@version        0.1.3
 @description    Soothing pastel theme for DeepL
 @author         Catppuccin
 @updateURL      https://github.com/catppuccin/deepl/raw/main/catppuccin.user.css
@@ -11,6 +11,7 @@
 @var checkbox quotes "Remove Quotes" 0
 @var checkbox header "Remove Header" 0
 @var checkbox footer "Remove Footer" 0
+@var checkbox tabs "Remove Tabs" 0
 ==/UserStyle== */
 
 @-moz-document url-prefix("https://www.deepl.com/translator") {
@@ -389,17 +390,19 @@
         stroke: $lavender;
     }
 
-    .lmt--web .lmt__inner_textarea_container .lmt__textarea_dummydiv {
-        background-color: theme is "Latte" ? $base : $surface0;
-    }
+    .lmt--web .lmt__inner_textarea {
+		&_container .lmt__textarea_dummydiv {
+			background-color: theme is "Latte" ? $base : $surface0;
+		}
+
+		&.lmt__textarea--inactive {
+			color: theme is "Latte" ? $overlay1 : $overlay2;
+		}
+	}
 
     .lmt--active_translation_request.lmt--active_translation_request--with_target_has_content .lmt__side_container--target .lmt__inner_textarea_container {
         animation: unset !important;
         box-shadow: unset !important;
-    }
-
-    .lmt--web .lmt__textarea.lmt__textarea--inactive {
-        color: theme is "Latte" ? $overlay1 : $overlay2;
     }
 
     #translator-source-clear-button:hover:enabled {
@@ -412,20 +415,26 @@
 
     /* Doucment container */
 
-    .docTrans_document {
+    .lmt__doc {
         [class*="panel"] {
             background-color: theme is "Latte" ? $base : $surface0;
             border-color: theme is "Latte" ? $surface2 : $overlay0;
         }
     }
 
-    .lmt--web .docTrans__help_popup {
+    [class^="docTrans__help_popup"] {
         background-color: theme is "Latte" ? $base : $surface0;
 
-        [class*="button"] {
+        button[class*="button"] {
             color: $base;
             background-color: $sapphire;
             border-color: $sapphire;
+
+            &:hover {
+                color: $base;
+                background-color: $lavender;
+                border-color: $lavender;
+            }
         }
     }
 
@@ -544,17 +553,19 @@
 		border: 1px solid $sapphire;
 	}
 
-	.lmt__glossary_editor_mainBar {
+	.lmt__glossary_editor {
+		&_mainBar {
 		background-color: $sapphire;
 		color: $base;
-	}
 
-	.lmt__glossary_editor_mainBar .lmt__glossary_editorClose {
-		color: $base;
-	}
+			.lmt__glossary_editorClose {
+				color: $base;
+			}
+		}
 
-	.lmt__glossary_editor .lmt__glossary_editor_glossaryMultiple {
-		background-color: theme is "Latte" ? $base : $surface0;
+		.lmt__glossary_editor_glossaryMultiple {
+			background-color: theme is "Latte" ? $base : $surface0;
+		}
 	}
 
 	.lmt__glossary_editor .lmt__glossary_editor_glossaryMultiple .lmt__glossary_editor_glossarySelect .lmt__glossary_editor_glossaryNameWrapper .lmt__glossary_editor_glossaryName {
@@ -622,16 +633,18 @@
 
     .lmt_firstEntry-content .lmt__glossary_newEntry_langButton {
         color: $blue;
-    }
 
-    .lmt_firstEntry-content .lmt__glossary_newEntry_langButton .lmt__glossary_arrowRight {
-        color: $subtext0;
-        stroke: $subtext0;
-    }
+		.lmt__glossary_arrow {
+			&Right {
+				color: $subtext0;
+				stroke: $subtext0;
+			}
 
-    .lmt_firstEntry-content .lmt__glossary_newEntry_langButton .lmt__glossary_arrowDown {
-        border-bottom: 2px solid $subtext0;
-        border-right: 2px solid $subtext0;
+			&Down {
+				border-bottom: 2px solid $subtext0;
+				border-right: 2px solid $subtext0;
+			}
+		}
     }
 
     [class*="form"] [class*="wrapper"] {
@@ -680,6 +693,10 @@
                 color: $text;
             }
         }
+    }
+
+    .lmt__glossary_ad_wrapper {
+        color: $base;
     }
 
     /* Quotes */
@@ -916,6 +933,27 @@
         }
     }
 
+    if (tabs) {
+        .lmt__doc {
+            margin-bottom: 0;
+
+            &Trans-tab-container {
+                display: none !important;
+                min-height: 100vh;
+            }
+        }
+
+        #lmt_quotes_article {
+            margin-top: 0;
+        }
+
+        .dl_translator_page_container {
+            align-items: center;
+            align-content: center;
+            justify-content: center;
+        }
+    }
+
     if (quotes != footer) {
         .showSeoText .eSEOtericText {
             margin-bottom: 70px;
@@ -925,6 +963,7 @@
     if (quotes && header && footer) {
         body {
             display: flex;
+            flex-direction: column;
             min-height: calc(100vh - 2em);
             align-items: center;
             align-content: center;
