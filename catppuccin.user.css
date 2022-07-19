@@ -1,7 +1,8 @@
 /* ==UserStyle==
 @name           DeepL Catppuccin
 @namespace      github.com/catppuccin/deepl
-@version        0.1.3
+@homepageURL    https://github.com/catppuccin/deepl
+@version        0.1.4
 @description    Soothing pastel theme for DeepL
 @author         Catppuccin
 @updateURL      https://github.com/catppuccin/deepl/raw/main/catppuccin.user.css
@@ -292,18 +293,19 @@
         color: $sapphire;
     }
 
-    .lmt--web .lmt__language_select > .lmt__language_select__active:hover strong,
-    .lmt--web .lmt__language_select > .lmt__language_select__active:hover .lmt__language_select__opener {
-        color: $lavender;
-    }
+    .lmt--web .lmt__language_select > .lmt__language_select__active:hover {
+		strong, .lmt__language_select__opener {
+			color: $lavender;
+		}
+	}
 
 	.lmt__glossaryButton__desktop {
 		border-color: theme is "Latte" ? $surface1 : $surface2;
-	}
 
-    .lmt__glossaryButton__desktop.switchedOn {
-        border-color: $sapphire;
-    }
+        &.switchedOn {
+            border-color: $sapphire;
+        }
+	}
 
     .lmt__glossary_button .lmt__glossary_button_label:hover {
         color: $lavender;
@@ -312,32 +314,46 @@
     .lmt__glossary_onOffSwitch_container [class*="label"] {
         --inlineLabelColor: $base;
         --background: $overlay0;
+
+        [class*="toggle"] [class*="knob"] {
+            background: $base;
+        }
+
+        &[class*="selected"] {
+            --background: $green;
+            --backgroundHover: darken($green, 20%);
+        }
     }
 
-    .lmt__glossary_onOffSwitch_container [class*="label"] [class*="toggle"] [class*="knob"] {
-        background: $base;
-    }
-
-    .lmt__glossary_onOffSwitch_container [class*="label"][class*="selected"] {
-        --background: $green;
-        --backgroundHover: darken($green, 20%);
+    .semitransparent-overlay {
+        background-color: theme is "Latte" ? alpha($mantle, .6) : alpha($base, .6);
     }
 
     /* Main containers */
 
-    .lmt--web .lmt__textarea_placeholder_text {
-        color: $overlay1;
+    .lmt--web .lmt__textarea {
+        &_placeholder_text {
+            color: $overlay1;
+        }
+
+        &.lmt__textarea--inactive {
+            color: $overlay0 !important;
+        }
+
+        &,
+        .lmt__textarea_container textarea {
+            color: $text;
+        }
+    }
+
+    .dl_body--redesign .lmt--web .lmt__source_textarea__length_marker {
+        color: $subtext0;
     }
 
     .integratedLanguageSelectors .dl_translator_page_container .lmt--web .lmt__text .lmt__textarea_container,
 	.integratedLanguageSelectors .lmt--web .lmt__sides_container .lmt__side_container--target .lmt__language_container_switch {
         border-color: theme is "Latte" ? $surface2 !important : $overlay0 !important;
         background: theme is "Latte" ? $base !important : $surface0 !important;
-        color: $text;
-    }
-
-    .lmt--web .lmt__textarea,
-    .lmt__textarea_container textarea {
         color: $text;
     }
 
@@ -382,12 +398,15 @@
         }
     }
 
-    .lmt--web .lmt__language_container .lmt__language_container_switch svg > path {
-        stroke: $sapphire;
-    }
+    .lmt--web .lmt__language_container .lmt__language_container_switch {
+        svg > path {
+            stroke: $sapphire;
+        }
 
-    .lmt--web .lmt__language_container .lmt__language_container_switch:hover svg > path, .lmt--web .lmt__language_container .lmt__language_container_switch:focus svg > path {
-        stroke: $lavender;
+        &:hover svg > path,
+        &:focus svg > path {
+            stroke: $lavender;
+        }
     }
 
     .lmt--web .lmt__inner_textarea {
@@ -405,21 +424,25 @@
         box-shadow: unset !important;
     }
 
-    #translator-source-clear-button:hover:enabled {
-        background-color: theme is "Latte" ? darken($base, 5%) : lighten($surface0, 5%);
-
+    #translator-source-clear-button {
         svg {
-            color: $sapphire;
+            color: $subtext0;
+        }
+
+        &:hover:enabled {
+            background-color: theme is "Latte" ? darken($base, 5%) : lighten($surface0, 5%);
+
+            svg {
+                color: $sapphire;
+            }
         }
     }
 
     /* Doucment container */
 
-    .lmt__doc {
-        [class*="panel"] {
-            background-color: theme is "Latte" ? $base : $surface0;
-            border-color: theme is "Latte" ? $surface2 : $overlay0;
-        }
+    .lmt__doc [class*="panel"] {
+        background-color: theme is "Latte" ? $base : $surface0;
+        border-color: theme is "Latte" ? $surface2 : $overlay0;
     }
 
     [class^="docTrans__help_popup"] {
@@ -462,29 +485,36 @@
 
     }
 
-    .lmt__dict .isForeignTerm .tag_lemma,
-    .lmt__dict .isForeignTerm .tag_lemma a,
-    .lmt__dict .isForeignTerm .tag_s,
-    .lmt__dict .isForeignTerm .tag_s a,
-    .lmt__dict .isForeignTerm .tag_trans_src_context,
-    .lmt__dict .sep {
-        color: $subtext1;
-    }
+    .lmt__dict {
+        .isForeignTerm {
+            .tag_lemma,
+            .tag_lemma a,
+            .tag_s,
+            .tag_s a,
+            .tag_trans_src_context {
+                color: $subtext;
+            }
 
-    .lmt__dict .tag_lemma a,
-    .lmt__dict .isForeignTerm .tag_trans,
-    .lmt__dict .isForeignTerm .tag_trans a,
-    .lmt__dict .isForeignTerm .tag_t,
-    .lmt__dict .isForeignTerm .tag_t a {
-        color: $sapphire;
-    }
+            .tag_trans,
+            .tag_trans a,
+            .tag_t,
+            .tag_t a {
+                color: $sapphire;
+            }
+        }
 
-    .lmt__dict .tag_trans {
-        color: $subtext1;
-    }
+        .tag_lemma a {
+            color: $sapphire
+        }
 
-    .lmt__dict .notascommon {
-        color: $subtext0;
+        .tag_trans,
+        .sep {
+            color: $subtext1;
+        }
+
+        .notascommon {
+            color: $subtext0;
+        }
     }
 
     /* Languages */
@@ -499,13 +529,19 @@
     	filter: brightness(.8);
 	}
 
-	.lmt__glossary_editor_langPairHeadline {
-    	color: $text;
-    	border-bottom: theme is "Latte" ? 1px solid $overlay0 : 1px solid $overlay1;
-	}
+	.lmt__glossary_editor {
+		&_langPairHeadline {
+			color: $text;
+			border-bottom: theme is "Latte" ? 1px solid $overlay0 : 1px solid $overlay1;
+		}
 
-	.lmt__glossary_editorRow {
-    	color: $text;
+		&Row {
+			color: $text;
+
+			.iconButton {
+				fill: theme is "Latte" ? $overlay2 : $subtext0;
+			}
+		}
 	}
 
 	.lmt__glossary_arrowRightWrapper .lmt__glossary_arrowRight {
@@ -513,31 +549,27 @@
 		border-right: theme is "Latte" ? 3px solid $overlay2 : 3px solid $subtext0;
 	}
 
-	.lmt__glossary_editorRow .iconButton {
-		fill: theme is "Latte" ? $overlay2 : $subtext0;
-	}
-
 	.lmt__language_select__menu.lmt__language_select__menu_three_columns {
 		background-color: theme is "Latte" ? $base : $surface0;
 		border: theme is "Latte" ? 1px solid $surface2 : 1px solid $overlay0;
+
+		.lmt__language_wrapper .lmt__language_select_column {
+			border-right: theme is "Latte" ? 1px solid $overlay0 : 1px solid $overlay1;
+
+			button .tick {
+				border-bottom: 2px solid $sapphire;
+				border-right: 2px solid $sapphire;
+			}
+		}
+	}
+
+	.lmt__language_select_column span {
+		color: $text;
 	}
 
 	.flex-1 {
 		background: theme is "Latte" ? $base : $surface0;
 		color: $subtext0;
-	}
-
-	.lmt__language_select__menu.lmt__language_select__menu_three_columns .lmt__language_wrapper .lmt__language_select_column {
-		border-right: theme is "Latte" ? 1px solid $overlay0 : 1px solid $overlay1;
-	}
-
-	.lmt__language_select__menu.lmt__language_select__menu_three_columns .lmt__language_wrapper .lmt__language_select_column button .tick {
-		border-bottom: 2px solid $sapphire;
-		border-right: 2px solid $sapphire;
-	}
-
-	.lmt__language_select_column span {
-		color: $text;
 	}
 
     .integratedLanguageSelectors.lang_menu_three_columns_large_mode_target .lmt--web .lmt__sides_container .lmt__side_container.lmt__side_container--target {
@@ -546,14 +578,14 @@
 
 	/* Glossary */
 
-	.lmt__glossary_editor,
-    [class*="modal"][dl-test="glossary-modal"] {
-		background-color: theme is "Latte" ? $base : $surface0;
-		color: $text;
-		border: 1px solid $sapphire;
-	}
-
 	.lmt__glossary_editor {
+		&,
+		[class*="modal"][dl-test="glossary-modal"] {
+			background-color: theme is "Latte" ? $base : $surface0;
+			color: $text;
+			border: 1px solid $sapphire;
+		}
+
 		&_mainBar {
 		background-color: $sapphire;
 		color: $base;
@@ -565,24 +597,29 @@
 
 		.lmt__glossary_editor_glossaryMultiple {
 			background-color: theme is "Latte" ? $base : $surface0;
+
+			.lmt__glossary_editor_glossary {
+				&Select .lmt__glossary_editor_glossaryNameWrapper {
+					.lmt__glossary_editor_glossaryName {
+						color: $text;
+					}
+
+					.lmt__glossary_editor_glossarySelectChevron.lmt__glossary_arrowDown {
+						border-bottom: 2px solid $text;
+						border-right: 2px solid $text;
+					}
+				}
+
+				&AddNewWrapper {
+					border-left: theme is "Latte" ? 1px solid $overlay0 : 1px solid $overlay1;
+
+					.lmt__glossary_editor_glossaryAddNew,
+					.lmt__glossary_editor_glossaryDownload {
+						color: $sapphire;
+					}
+				}
+			}
 		}
-	}
-
-	.lmt__glossary_editor .lmt__glossary_editor_glossaryMultiple .lmt__glossary_editor_glossarySelect .lmt__glossary_editor_glossaryNameWrapper .lmt__glossary_editor_glossaryName {
-		color: $text;
-	}
-
-	.lmt__glossary_editor .lmt__glossary_editor_glossaryMultiple .lmt__glossary_editor_glossarySelect .lmt__glossary_editor_glossaryNameWrapper .lmt__glossary_editor_glossarySelectChevron.lmt__glossary_arrowDown {
-		border-bottom: 2px solid $text;
-		border-right: 2px solid $text;
-	}
-
-	.lmt__glossary_editor .lmt__glossary_editor_glossaryMultiple .lmt__glossary_editor_glossaryAddNewWrapper {
-		border-left: theme is "Latte" ? 1px solid $overlay0 : 1px solid $overlay1;
-	}
-
-	.lmt__glossary_editor .lmt__glossary_editor_glossaryMultiple .lmt__glossary_editor_glossaryAddNewWrapper .lmt__glossary_editor_glossaryAddNew, .lmt__glossary_editor .lmt__glossary_editor_glossaryMultiple .lmt__glossary_editor_glossaryAddNewWrapper .lmt__glossary_editor_glossaryDownload {
-		color: $sapphire;
 	}
 
 	[class^="form"] {
@@ -624,28 +661,30 @@
         }
     }
 
-    .lmt_firstEntry-content .lmt__glossary_newEntry_inputSource,
-    .lmt_firstEntry-content .lmt__glossary_newEntry_inputTarget,
-    .lmt_firstEntry-content .lmt__glossary_newEntry_langButton {
-        background-color: theme is "Latte" ? $surface1 : $surface2;
-        border-color: theme is "Latte" ? $overlay1 : $overlay2;
-    }
+	.lmt_firstEntry-content {
+		.lmt__glossary_newEntry_inputSource,
+		.lmt__glossary_newEntry_inputTarget,
+		.lmt__glossary_newEntry_langButton {
+			background-color: theme is "Latte" ? $surface1 : $surface2;
+			border-color: theme is "Latte" ? $overlay1 : $overlay2;
+		}
 
-    .lmt_firstEntry-content .lmt__glossary_newEntry_langButton {
-        color: $blue;
+		.lmt__glossary_newEntry_langButton {
+			color: $blue;
 
-		.lmt__glossary_arrow {
-			&Right {
-				color: $subtext0;
-				stroke: $subtext0;
-			}
+			.lmt__glossary_arrow {
+				&Right {
+					color: $subtext0;
+					stroke: $subtext0;
+				}
 
-			&Down {
-				border-bottom: 2px solid $subtext0;
-				border-right: 2px solid $subtext0;
+				&Down {
+					border-bottom: 2px solid $subtext0;
+					border-right: 2px solid $subtext0;
+				}
 			}
 		}
-    }
+	}
 
     [class*="form"] [class*="wrapper"] {
         [id*="headlessui-listbox-button"] + ul[id*="headlessui-listbox-options"] {
@@ -662,15 +701,15 @@
     /* Tooltips and pop-ups */
 
     .lmt__glossary_dialog {
-        background: $surface1;
+        background: theme is "Latte" ? $surface0 : $surface1;
         color: $text;
     }
 
     .lmt__edit_text_popup {
-        background: $surface1;
+        background: theme is "Latte" ? $surface0 : $surface1;
 
         ul {
-            background: $surface1;
+            background: theme is "Latte" ? $surface0 : $surface1;
         }
 
         li {
@@ -840,22 +879,6 @@
         height: 35px;
     }
 
-    [class^="languageSelectorContainer"]::after {
-        content: "";
-        mask-image: url("https://static.deepl.com/img/_optimized/footer/languageLogo.svg");
-        -webkit-mask-image: url("https://static.deepl.com/img/_optimized/footer/languageLogo.svg");
-        display: block;
-        position: relative;
-        background: $subtext0;
-        -webkit-mask-size: 100%;
-        -webkit-mask-position: 100%;
-        mask-size: 24px;
-        mask-position: 0;
-        right: 194px;
-        width: 24px;
-        height: 24px;
-    }
-
     .dl_translator_link_container::after {
         content: "";
         mask-image: url("https://static.deepl.com/img/logo/DeepL_Text_darkBlue.svg");
@@ -870,6 +893,22 @@
         left: 1;
         width: 66px;
         height: 18px;
+    }
+
+	[class^="languageSelectorContainer"]::after {
+        content: "";
+        mask-image: url("https://static.deepl.com/img/_optimized/footer/languageLogo.svg");
+        -webkit-mask-image: url("https://static.deepl.com/img/_optimized/footer/languageLogo.svg");
+        display: block;
+        position: relative;
+        background: $subtext0;
+        -webkit-mask-size: 100%;
+        -webkit-mask-position: 100%;
+        mask-size: 24px;
+        mask-position: 0;
+        right: 194px;
+        width: 24px;
+        height: 24px;
     }
 
     @media only screen and (max-width: 650px) {
