@@ -2,7 +2,7 @@
 @name           DeepL Catppuccin
 @namespace      github.com/catppuccin/deepl
 @homepageURL    https://github.com/catppuccin/deepl
-@version        0.1.4
+@version        0.1.5
 @description    Soothing pastel theme for DeepL
 @author         Catppuccin
 @updateURL      https://github.com/catppuccin/deepl/raw/main/catppuccin.user.css
@@ -13,6 +13,7 @@
 @var checkbox header "Remove Header" 0
 @var checkbox footer "Remove Footer" 0
 @var checkbox tabs "Remove Tabs" 0
+@var checkbox dictheader "Remove Dictionary Header" 0
 ==/UserStyle== */
 
 @-moz-document url-prefix("https://www.deepl.com/translator") {
@@ -208,7 +209,7 @@
 				color: $base;
 
 				&:hover {
-					background-color: darken($blue, 25%);
+					background-color: shade($blue, 25%);
 					color: $base;
 				}
 			}
@@ -492,7 +493,7 @@
             .tag_s,
             .tag_s a,
             .tag_trans_src_context {
-                color: $subtext;
+                color: $subtext1;
             }
 
             .tag_trans,
@@ -515,6 +516,20 @@
         .notascommon {
             color: $subtext0;
         }
+
+        #dictionary-header {
+            border: theme is "Latte" ? 1px solid $surface2 !important : 1px solid $overlay0 !important;
+            background: theme is "Latte" ? $base !important : $surface0 !important;
+            color: $sapphire !important;
+        }
+    }
+
+    .stroke-deepl-blue {
+        stroke: $sapphire;
+
+        &[class*="hover"]:hover {
+            stroke: $lavender !important;
+        }
     }
 
     /* Languages */
@@ -523,11 +538,15 @@
         border-color: $sapphire !important;
     }
 
-    [class*="form"] [class*="submit"]:disabled {
-    	background: $sapphire;
+    [class*="form"] [class*="submit"] {
+        background: $sapphire;
     	color: $base;
-    	filter: brightness(.8);
-	}
+
+        &:disabled {
+            background: shade($sapphire, 25%);
+            color: $base;
+	    }
+    }
 
 	.lmt__glossary_editor {
 		&_langPairHeadline {
@@ -587,8 +606,8 @@
 		}
 
 		&_mainBar {
-		background-color: $sapphire;
-		color: $base;
+			background-color: $sapphire;
+			color: $base;
 
 			.lmt__glossary_editorClose {
 				color: $base;
@@ -993,6 +1012,20 @@
         }
     }
 
+    if (dictheader) {
+        .lmt__dict {
+            #dictionary-header {
+                display: none !important;
+            }
+
+            .lmt__dict__empty_state.lmt__dict__placeholder__shown {
+                border-top: theme is "Latte" ? 1px solid $surface2 !important : 1px solid $overlay0 !important;
+                border-top-left-radius: 8px !important;
+                border-top-right-radius: 8px !important;
+            }
+        }
+    }
+
     if (quotes != footer) {
         .showSeoText .eSEOtericText {
             margin-bottom: 70px;
@@ -1011,9 +1044,16 @@
 
         .dl_translator_page_container {
             margin: 2em 0;
+
             > * {
                 width: 100vw;
             }
+        }
+    }
+
+    if (quotes && header && footer && tabs) {
+        body {
+            min-height: 100vh;
         }
     }
 }
