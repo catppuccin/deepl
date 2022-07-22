@@ -2,7 +2,7 @@
 @name           DeepL Catppuccin
 @namespace      github.com/catppuccin/deepl
 @homepageURL    https://github.com/catppuccin/deepl
-@version        0.1.5
+@version        0.1.6
 @description    Soothing pastel theme for DeepL
 @author         Catppuccin
 @updateURL      https://github.com/catppuccin/deepl/raw/main/catppuccin.user.css
@@ -273,7 +273,7 @@
 		.lmt--web {
 			.lmt__sides_container {
 				.lmt__side_container {
-       			 	border-color: theme is "Latte" ? $surface2 : $overlay0;
+       			 	border-color: theme is "Latte" ? $surface1 : $surface2;
     			}
 
 				.lmt__language_container {
@@ -312,7 +312,7 @@
         color: $lavender;
     }
 
-    .lmt__glossary_onOffSwitch_container [class*="label"] {
+    [class*="label"] {
         --inlineLabelColor: $base;
         --background: $overlay0;
 
@@ -353,7 +353,7 @@
 
     .integratedLanguageSelectors .dl_translator_page_container .lmt--web .lmt__text .lmt__textarea_container,
 	.integratedLanguageSelectors .lmt--web .lmt__sides_container .lmt__side_container--target .lmt__language_container_switch {
-        border-color: theme is "Latte" ? $surface2 !important : $overlay0 !important;
+        border-color: theme is "Latte" ? $surface1 !important : $surface2 !important;
         background: theme is "Latte" ? $base !important : $surface0 !important;
         color: $text;
     }
@@ -443,7 +443,7 @@
 
     .lmt__doc [class*="panel"] {
         background-color: theme is "Latte" ? $base : $surface0;
-        border-color: theme is "Latte" ? $surface2 : $overlay0;
+        border-color: theme is "Latte" ? $surface1 : $surface2;
     }
 
     [class^="docTrans__help_popup"] {
@@ -470,7 +470,7 @@
 
     .lmt__dict.lmt--is-dict-ready .lmt__dict__inner,
     .lmt__dict .lmt__dict__empty_state.lmt__dict__placeholder__shown {
-        border: theme is "Latte" ? 1px solid $surface2 : 1px solid $overlay0;
+        border: theme is "Latte" ? 1px solid $surface1 : 1px solid $surface2;
         background: theme is "Latte" ? $base : $surface0;
         color: theme is "Latte" ? $overlay0 : $overlay1;
 
@@ -518,7 +518,7 @@
         }
 
         #dictionary-header {
-            border: theme is "Latte" ? 1px solid $surface2 !important : 1px solid $overlay0 !important;
+            border: theme is "Latte" ? 1px solid $surface1 !important : 1px solid $surface2 !important;
             background: theme is "Latte" ? $base !important : $surface0 !important;
             color: $sapphire !important;
         }
@@ -534,8 +534,14 @@
 
     /* Languages */
 
-    .lmt__language_select__menu > div > div > focus-within:border-blue-chill {
-        border-color: $sapphire !important;
+    .lmt__language_select__menu {
+        > div > div > focus-within:border-blue-chill {
+            border-color: $sapphire !important; // This doesn't work
+        }
+
+        .items-center.gap-3 svg path {
+            stroke: $overlay2 !important;
+        }
     }
 
     [class*="form"] [class*="submit"] {
@@ -570,10 +576,10 @@
 
 	.lmt__language_select__menu.lmt__language_select__menu_three_columns {
 		background-color: theme is "Latte" ? $base : $surface0;
-		border: theme is "Latte" ? 1px solid $surface2 : 1px solid $overlay0;
+		border: theme is "Latte" ? 1px solid $surface1 : 1px solid $surface2;
 
 		.lmt__language_wrapper .lmt__language_select_column {
-			border-right: theme is "Latte" ? 1px solid $overlay0 : 1px solid $overlay1;
+			border-right: theme is "Latte" ? 1px solid $surface1 : 1px solid $surface2;
 
 			button .tick {
 				border-bottom: 2px solid $sapphire;
@@ -592,18 +598,18 @@
 	}
 
     .integratedLanguageSelectors.lang_menu_three_columns_large_mode_target .lmt--web .lmt__sides_container .lmt__side_container.lmt__side_container--target {
-        border: theme is "Latte" ? 1px solid $surface2 !important : 1px solid $overlay0 !important;
+        border: theme is "Latte" ? 1px solid $surface1 !important : 1px solid $surface2 !important;
     }
 
 	/* Glossary */
 
+    [class^="form"] {
+		background: theme is "Latte" ? $base : $surface0;
+	}
+
 	.lmt__glossary_editor {
-		&,
-		[class*="modal"][dl-test="glossary-modal"] {
-			background-color: theme is "Latte" ? $base : $surface0;
-			color: $text;
-			border: 1px solid $sapphire;
-		}
+        background: theme is "Latte" ? $base : $surface0;
+        border-color: $sapphire;
 
 		&_mainBar {
 			background-color: $sapphire;
@@ -615,7 +621,7 @@
 		}
 
 		.lmt__glossary_editor_glossaryMultiple {
-			background-color: theme is "Latte" ? $base : $surface0;
+			background-color: theme is "Latte" ? $surface0 : $base;
 
 			.lmt__glossary_editor_glossary {
 				&Select .lmt__glossary_editor_glossaryNameWrapper {
@@ -639,23 +645,33 @@
 				}
 			}
 		}
-	}
 
-	[class^="form"] {
-		background: theme is "Latte" ? $base : $surface0;
+        &RowsWrapper {
+            &::after {
+                background-color: theme is "Latte" ? $base : $surface0;
+            }
+        }
+
+        [class*="form"] {
+            background: theme is "Latte" ? $surface0 : $base;
+        }
 	}
 
 	[class*="wrapper"] [class*="controls"] [class*="input"],
 	[class*="wrapper"] [class*="button"] {
-		--input-background: theme is "Latte" ? $surface0 : $surface1;
-		--button-background: theme is "Latte" ? $surface0 : $surface1;
+		--input-background: $surface0;
+		--button-background: $surface0;
 		--button-color: $text;
-		--button-border-color: theme is "Latte" ? $overlay0 : $overlay1;
-		--input-border-color: theme is "Latte" ? $overlay0 : $overlay1;
+		--button-border-color: $surface2;
+		--input-border-color: $surface2;
 		--input-color: $subtext1;
 	}
 
-    [class*="modal"][dl-test="glossary-modal"] {
+    [dl-test="glossary-modal"] {
+        background-color: theme is "Latte" ? $base : $surface0;
+		color: $text;
+		border: 1px solid $sapphire;
+
         [class^="content"] {
             color: $text;
 
@@ -676,7 +692,7 @@
         textarea:-ms-input-placeholder,
         input::-moz-placeholder,
         textarea::-moz-placeholder {
-            color: $subtext0;
+            color: $overlay1;
         }
     }
 
@@ -686,6 +702,11 @@
 		.lmt__glossary_newEntry_langButton {
 			background-color: theme is "Latte" ? $surface1 : $surface2;
 			border-color: theme is "Latte" ? $overlay1 : $overlay2;
+            color: $text;
+
+            &:focus {
+                border-color: $sapphire;
+            }
 		}
 
 		.lmt__glossary_newEntry_langButton {
@@ -706,6 +727,10 @@
 	}
 
     [class*="form"] [class*="wrapper"] {
+        [class*="flyout"] {
+            --border: theme is "Latte" ? 1px solid $overlay0 : 1px solid $overlay1;
+        }
+
         [id*="headlessui-listbox-button"] + ul[id*="headlessui-listbox-options"] {
             background-color: theme is "Latte" ? $surface0 : $surface1;
             --option-icon-color: $sapphire;
@@ -713,6 +738,11 @@
 
             [class*="option"][class*="active"] {
                 --option-background: alpha($yellow, 0.2);
+            }
+
+            [class*="option"][class*="unavailable"] {
+                --option-icon-color: $subtext0;
+                --option-color: $overlay2;
             }
         }
     }
@@ -828,6 +858,56 @@
         }
     }
 
+    /* Menu */
+
+    [class^="menuContainer"] {
+        background-color: theme is "Latte" ? $surface0 : $surface1;
+
+        [class^="container"] {
+            div + div {
+                border-color: theme is "Latte" ? $overlay0 : $overlay1;
+            }
+
+            a {
+                color: $text;
+
+                &:hover {
+                    color: $sapphire;
+                }
+            }
+        }
+
+        [class^="mainContent"] + [class^="mainContent"] {
+            border-top: theme is "Latte" ? thin solid $overlay0 : thin solid $overlay1;
+
+            [class*="button"][class*="color_primary"] {
+                color: $sapphire;
+            }
+        }
+
+        [class*="button"].variant_text--gozza {
+            color: $sapphire !important;
+        }
+    }
+
+    [class*="closeButton_dark"] {
+        &::before, &::after {
+            background-color: $subtext1;
+        }
+
+        &:hover {
+            &::before,
+            &::after {
+                background-color: $sapphire;
+            }
+        }
+    }
+
+    [class*="badge"][class*="blueDark"] {
+        background-color: $sapphire;
+        color: $base;
+    }
+
     /* Images */
 
     if (theme!="Latte") {
@@ -835,10 +915,27 @@
         .dl_translator_link_container img,
         .lmt_quote__inner::before,
         .dl_navigate_away img,
-        [class*="supportedIcons"] img {
-            filter: brightness(175%);
+        [class*="supportedIcons"] img,
+        .lmt_quote__logo_3 {
+            filter: invert(100%) hue-rotate(180deg);
 
         }
+
+        // [class^="brandingContainer"] > .dl_navigate_away::after {
+        //     content: "";
+        //     mask-image: url("https://static.deepl.com/img/_optimized/footer/deeplLogo.svg");
+        //     -webkit-mask-image: url("https://static.deepl.com/img/_optimized/footer/deeplLogo.svg");
+        //     display: block;
+        //     position: relative;
+        //     background: $sapphire;
+        //     -webkit-mask-size: 100%;
+        //     -webkit-mask-position: 100%;
+        //     mask-size: 102px;
+        //     mask-position: 100%;
+        //     right: 102px;
+        //     width: 102px;
+        //     height: 35px;
+        // }
     }
 
     a {
@@ -882,37 +979,21 @@
         }
     }
 
-    [class^="brandingContainer"] > .dl_navigate_away::after {
-        content: "";
-        mask-image: url("https://static.deepl.com/img/_optimized/footer/deeplLogo.svg");
-        -webkit-mask-image: url("https://static.deepl.com/img/_optimized/footer/deeplLogo.svg");
-        display: block;
-        position: relative;
-        background: $sapphire;
-        -webkit-mask-size: 100%;
-        -webkit-mask-position: 100%;
-        mask-size: 102px;
-        mask-position: 100%;
-        right: 58px;
-        width: 102px;
-        height: 35px;
-    }
-
-    .dl_translator_link_container::after {
-        content: "";
-        mask-image: url("https://static.deepl.com/img/logo/DeepL_Text_darkBlue.svg");
-        -webkit-mask-image: url("https://static.deepl.com/img/logo/DeepL_Text_darkBlue.svg");
-        display: block;
-        position: absolute;
-        background: $sapphire;
-        -webkit-mask-size: 100%;
-        -webkit-mask-position: 0;
-        mask-size: 100%;
-        mask-position: 0;
-        left: 1;
-        width: 66px;
-        height: 18px;
-    }
+    // .dl_translator_link_container::after {
+    //     content: "";
+    //     mask-image: url("https://static.deepl.com/img/logo/DeepL_Text_darkBlue.svg");
+    //     -webkit-mask-image: url("https://static.deepl.com/img/logo/DeepL_Text_darkBlue.svg");
+    //     display: block;
+    //     position: absolute;
+    //     background: $sapphire;
+    //     -webkit-mask-size: 100%;
+    //     -webkit-mask-position: 0;
+    //     mask-size: 100%;
+    //     mask-position: 0;
+    //     left: 1;
+    //     width: 66px;
+    //     height: 18px;
+    // }
 
 	[class^="languageSelectorContainer"]::after {
         content: "";
@@ -933,40 +1014,6 @@
     @media only screen and (max-width: 650px) {
         [class^="languageSelectorContainer"]::after {
             right: 184px;
-        }
-    }
-
-    /* Menu */
-
-    [class^="menuContainer"] {
-        background-color: $surface1;
-
-        [class^="container"] a {
-            color: $text;
-
-            &:hover {
-                color: $sapphire;
-            }
-        }
-
-        [class^="mainContent"] + [class^="mainContent"] {
-            border-top: theme is "Latte" ? thin solid $overlay0 : thin solid $overlay1;
-
-            [class*="button"][class*="color_primary"] {
-                color: $sapphire;
-            }
-        }
-    }
-
-    [class*="closeButton_dark"] {
-        &::before, &::after {
-            background-color: $subtext1;
-        }
-
-        &:hover {
-            &::before, &::after {
-                background-color: $sapphire;
-            }
         }
     }
 
@@ -1018,8 +1065,9 @@
                 display: none !important;
             }
 
-            .lmt__dict__empty_state.lmt__dict__placeholder__shown {
-                border-top: theme is "Latte" ? 1px solid $surface2 !important : 1px solid $overlay0 !important;
+            .lmt__dict__empty_state.lmt__dict__placeholder__shown,
+            &.lmt--is-dict-ready .lmt__dict__inner {
+                border-top: theme is "Latte" ? 1px solid $surface1 !important : 1px solid $surface2 !important;
                 border-top-left-radius: 8px !important;
                 border-top-right-radius: 8px !important;
             }
