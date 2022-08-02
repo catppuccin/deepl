@@ -2,7 +2,7 @@
 @name           DeepL Catppuccin
 @namespace      github.com/catppuccin/deepl
 @homepageURL    https://github.com/catppuccin/deepl
-@version        0.1.71
+@version        0.1.8
 @description    Soothing pastel theme for DeepL
 @author         Catppuccin
 @updateURL      https://github.com/catppuccin/deepl/raw/main/catppuccin.user.css
@@ -262,13 +262,38 @@
     }
 
     /* Input containers */
-    /* Headers */
+
+    .lmt--web .lmt__sides_container {
+        border-color: theme is "Latte" ? $surface1 !important : $surface2 !important;
+    }
+
+    /* Giving up */
+
+    .df2930 .integratedLanguageSelectors .lmt--web .lmt__sides_container {
+        &.lmt__sides_container--focus_source .lmt__side_container.lmt__side_container--source .lmt__textarea_container,
+        &.lmt__sides_container--focus_target .lmt__side_container.lmt__side_container--target .lmt__textarea_container {
+            border: 1px solid $sapphire !important;
+        }
+
+        .lmt__side_container.lmt__side_container--source .lmt__textarea_container {
+            border-right: theme is "Latte" ? 1px solid $surface1 !important : 1px solid $surface2 !important;
+            border-top: theme is "Latte" ? 1px solid $surface1 !important : 1px solid $surface2 !important;
+        }
+
+        .lmt__side_container.lmt__side_container--target .lmt__textarea_container {
+            border-top: theme is "Latte" ? 1px solid $surface1 !important : 1px solid $surface2 !important;
+        }
+    }
 
     .integratedLanguageSelectors {
         .lmt--web {
             .lmt__sides_container {
                 .lmt__side_container {
                     border-color: theme is "Latte" ? $surface1 !important : $surface2 !important;
+
+                    &.lmt__sides_container--focus_source .lmt__side_container.lmt__side_container--source .lmt__textarea_container {
+                        border: 1px solid $sapphire !important;
+                    }
                 }
 
                 .lmt__language_container {
@@ -346,6 +371,10 @@
             color: $text;
         }
     }
+
+    // .lmt__source_textarea_overlay span.lmt__source_textarea_overlay__text:not([class=*"active"]) {
+    //     color: $overlay0 !important;
+    // }
 
     .dl_body--redesign .lmt--web .lmt__source_textarea__length_marker {
         color: $subtext0;
@@ -444,14 +473,33 @@
     }
 
     /* Doucment container */
-    .lmt__doc [class*="panel"] {
+
+    .lmt__doc {
+        #doc-trans-source-panel[class*="panel"] {
+            background-color: theme is "Latte" ? $base : $surface0;
+            border-color: theme is "Latte" ? $surface1 : $surface2;
+
+            [class*="header"] {
+                background-color: theme is "Latte" ? $base : $surface0;
+                border-color: theme is "Latte" ? $surface1 : $surface2;
+            }
+        }
+
+        #doc-trans-source-panel-content {
+            background-color: theme is "Latte" ? $base : $surface0;
+        }
+
+        .lmt__language_container {
+            background-color: theme is "Latte" ? $base : $surface0;
+        }
+    }
+
+    [class^="docTrans__help_popup"],
+    #doc-trans-target-panel-content {
         background-color: theme is "Latte" ? $base : $surface0;
-        border-color: theme is "Latte" ? $surface1 : $surface2;
     }
 
     [class^="docTrans__help_popup"] {
-        background-color: theme is "Latte" ? $base : $surface0;
-
         button[class*="button"] {
             color: $base;
             background-color: $sapphire;
@@ -462,6 +510,15 @@
                 background-color: $lavender;
                 border-color: $lavender;
             }
+        }
+    }
+
+    #doc-trans-target-panel {
+        border-color: theme is "Latte" ? $surface1 : $surface2;
+        background-color: theme is "Latte" ? $base : $surface0;
+
+        [class^="header"] {
+            border-bottom: theme is "Latte" ? 1px solid $surface1 : 1px solid $surface2;
         }
     }
 
