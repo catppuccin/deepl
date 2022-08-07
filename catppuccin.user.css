@@ -2,7 +2,7 @@
 @name           DeepL Catppuccin
 @namespace      github.com/catppuccin/deepl
 @homepageURL    https://github.com/catppuccin/deepl
-@version        0.1.8
+@version        0.1.9
 @description    Soothing pastel theme for DeepL
 @author         Catppuccin
 @updateURL      https://github.com/catppuccin/deepl/raw/main/catppuccin.user.css
@@ -14,6 +14,7 @@
 @var checkbox footer "Remove Footer" 0
 @var checkbox tabs "Remove Tabs" 0
 @var checkbox dictheader "Remove Dictionary Header" 0
+@var checkbox removeAds "Remove DeepL Ads" 0
 ==/UserStyle== */
 @-moz-document url-prefix("https://www.deepl.com/translator") {
     if (theme=="Latte") {
@@ -1169,6 +1170,12 @@
     if (quotes && header && footer && tabs) {
         body {
             min-height: 100vh;
+        }
+    }
+	
+	if (removeAds) {
+        #lmt_pro_ad_container {
+            display: none;
         }
     }
 }
