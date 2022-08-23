@@ -2,7 +2,7 @@
 @name           DeepL Catppuccin
 @namespace      github.com/catppuccin/deepl
 @homepageURL    https://github.com/catppuccin/deepl
-@version        0.1.9
+@version        0.1.10
 @description    Soothing pastel theme for DeepL
 @author         Catppuccin
 @updateURL      https://github.com/catppuccin/deepl/raw/main/catppuccin.user.css
@@ -415,8 +415,10 @@
         background: theme is "Latte" ? $base !important : $surface0 !important;
     }
 
-    .lmt__textarea_container {
-        [class*="button"] {
+    .lmt__textarea_container,
+    .lmt__target_toolbar {
+        [class*="button"],
+        button {
             svg {
                 color: $sapphire;
             }
@@ -1172,7 +1174,7 @@
             min-height: 100vh;
         }
     }
-	
+
 	if (removeAds) {
         #lmt_pro_ad_container {
             display: none;
