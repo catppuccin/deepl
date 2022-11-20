@@ -10,6 +10,7 @@
 
 @var select theme "Theme" ["Latte", "Frappe", "Macchiato", "Mocha*"]
 @var select accent "Accent" ["Rosewater", "Flamingo", "Pink", "Mauve", "Red", "Maroon", "Peach", "Yellow", "Green", "Teal", "Blue*", "Sapphire", "Sky", "Lavender"]
+
 @var checkbox quotes "Remove Quotes" 0
 @var checkbox header "Remove Header" 0
 @var checkbox footer "Remove Footer" 0
@@ -17,7 +18,6 @@
 @var checkbox dictheader "Remove Dictionary Header" 0
 @var checkbox removeAds "Remove DeepL Ads" 0
 ==/UserStyle== */
-
 @-moz-document url-prefix("https://www.deepl.com/translator") {
     if (theme == "Latte") {
         $rosewater = #dc8a78;
@@ -189,19 +189,19 @@
         background-color: $mantle !important;
     }
 
-    [class* = "button--"][class* = "color_primary--"] {
+    [class*="button--"][class*="color_primary--"] {
         border-color: $accent2;
         background-color: $accent2;
         color: $accent2;
     }
 
-    [class* = "button--"][class* = "variant_contained--"],
-    .dark [class* = "button--"][class* = "variant_contained--"] {
+    [class*="button--"][class*="variant_contained--"],
+    .dark [class*="button--"][class*="variant_contained--"] {
         color: theme is "Latte" ? $base: $crust;
     }
 
-    [class* = "button--"].variant_text--gozza,
-    .dark [class* = "button--"].variant_text--gozza {
+    [class*="button--"].variant_text--gozza,
+    .dark [class*="button--"].variant_text--gozza {
         background-color: transparent;
     }
 
@@ -276,11 +276,11 @@
     }
 
     #new-menu-container {
-        [class^ = "menuContainer--"] {
+        [class^="menuContainer--"] {
             background-color: $base;
         }
 
-        [class^ = "container--"] a {
+        [class^="container--"] a {
             color: $text;
 
             &:hover {
@@ -288,11 +288,11 @@
             }
         }
 
-        [class^ = "mainContent--"] + [class^ = "mainContent--"] {
+        [class^="mainContent--"] + [class^="mainContent--"] {
             border-top-color: $surface1;
         }
 
-        [class^ = "closeButton"] {
+        [class^="closeButton"] {
             &::before,
             &::after {
                 background-color: $subtext0;
@@ -310,31 +310,31 @@
     /////
 
     .lmt__docTrans-tab-container {
-        [class^ = "cardButton--"] {
+        [class^="cardButton--"] {
             background-color: $base;
             border-color: $surface1;
 
-            &:not([class* = "active--"]):hover {
+            &:not([class*="active--"]):hover {
                 background-color: $surface0;
             }
         }
 
-        [class^ = "textLower--"] {
+        [class^="textLower--"] {
             color: $overlay2;
         }
 
-        [class* = "logo"],
-        [class^ = "textUpper--"] {
+        [class*="logo"],
+        [class^="textUpper--"] {
             color: $accent;
         }
 
-        [class* = "active--"] {
-            [class* = "logo"],
-            [class^ = "textUpper--"] {
+        [class*="active--"] {
+            [class*="logo"],
+            [class^="textUpper--"] {
                 color: $text;
             }
 
-            [class^ = "innerLower--"] {
+            [class^="innerLower--"] {
                 background-color: $accent;
             }
         }
@@ -349,14 +349,14 @@
     .integratedLanguageSelectors .lmt--web .lmt__sides_container .lmt__language_container,
     .dl_body--redesign .lmt--web .lmt__textarea_container,
     .lmt__doc .lmt__language_container #doc-trans-source-panel,
-    [class^ = "docTrans__help_popup--"],
+    [class^="docTrans__help_popup--"],
     #doc-trans-target-panel {
         background: $base;
     }
 
     #doc-trans-source-panel,
     #doc-trans-target-panel {
-        [class^ = "header--"] {
+        [class^="header--"] {
             border-bottom-color: $surface2;
         }
     }
@@ -469,7 +469,9 @@
     .lmt__language_select__menu.lmt__language_select__menu_three_columns .lmt__language_wrapper .lmt__language_select_column button .tick {
         border-bottom-color: $accent;
         border-right-color: $accent;
-    } // glossary
+    }
+
+    // glossary
     .lmt__glossaryButton__desktop {
         border-color: alpha($text, .12)
     }
@@ -492,11 +494,11 @@
             background-color: $surface1;
         }
 
-        &[class* = "modal--"] {
+        &[class*="modal--"] {
             background-color: $surface0;
         }
 
-        [class* = "content--"] {
+        [class*="content--"] {
             color: $text;
         }
     }
@@ -571,7 +573,7 @@
 
     .combined_app_ad_mobile_and_desktop .dl_ad_pro_container,
     .dl_pro__banner--2021--wrapper,
-    [class^ = "footerOuterContainer"],
+    [class^="footerOuterContainer"],
     .lmt_quote__inner {
         background-color: $crust;
     }
@@ -603,7 +605,7 @@
 
     // dictionary
     #lmt__dict_container {
-        [class^ = "content--"] {
+        [class^="content--"] {
             .tag_lemma a {
                 color: $accent;
             }
@@ -639,12 +641,12 @@
 
     // footer
     .dl_footerV2_container {
-        [class* = "linkList--"] li {
+        [class*="linkList--"] li {
             &:not(:first-of-type) a {
                 color: $accent2 !important; // idk why this isn't coloring
             }
 
-            [class* = "badge--"] {
+            [class*="badge--"] {
                 background-color: spin($accent, -40deg) !important;
                 color: theme is "Latte" ? $base: $crust !important;
             }
@@ -653,14 +655,16 @@
 
     /////
 
-    #dl_menu_logo img,
-    #dl_menu_translator_simplified img,
-    .lmt_quote .lmt_quote__logo,
-    .lmt_quote__inner::before,
-    [class^ = "docTrans__help_popup__container--"] [class^ = "supportedIcons--"] > div,
-    .dl_footerV2_container [class^ = "brandingContainer--"] a > img,
-    [class^ = "socialMediaContainer--"] a > img {
-        filter: invert(100%) hue-rotate(180deg);
+    if (theme != Latte) {
+      #dl_menu_logo img,
+      #dl_menu_translator_simplified img,
+      .lmt_quote .lmt_quote__logo,
+      .lmt_quote__inner::before,
+      [class^="docTrans__help_popup__container--"] [class^="supportedIcons--"] > div,
+      .dl_footerV2_container [class^="brandingContainer--"] a > img,
+      [class^="socialMediaContainer--"] a > img {
+          filter: invert(100%) hue-rotate(180deg);
+      }
     }
 
     /////
