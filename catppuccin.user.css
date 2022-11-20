@@ -725,6 +725,10 @@
         border-color: $surface2;
     }
 
+    .lmt__glossary_editorRow .iconButton {
+        color: $text;
+    }
+
     /////
 
     .combined_app_ad_mobile_and_desktop .dl_ad_pro_container,
