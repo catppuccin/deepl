@@ -9,6 +9,7 @@
 @preprocessor   stylus
 
 @var select theme "Theme" ["Latte", "Frappe", "Macchiato", "Mocha*"]
+@var select accent "Accent" ["Rosewater", "Flamingo", "Pink", "Mauve", "Red", "Maroon", "Peach", "Yellow", "Green", "Teal", "Blue*", "Sapphire", "Sky", "Lavender"]
 @var checkbox quotes "Remove Quotes" 0
 @var checkbox header "Remove Header" 0
 @var checkbox footer "Remove Footer" 0
@@ -16,8 +17,9 @@
 @var checkbox dictheader "Remove Dictionary Header" 0
 @var checkbox removeAds "Remove DeepL Ads" 0
 ==/UserStyle== */
+
 @-moz-document url-prefix("https://www.deepl.com/translator") {
-    if (theme=="Latte") {
+    if (theme == "Latte") {
         $rosewater = #dc8a78;
         $flamingo = #dd7878;
         $pink = #ea76cb;
@@ -44,9 +46,7 @@
         $base = #eff1f5;
         $mantle = #e6e9ef;
         $crust = #dce0e8;
-    }
-
-    else if (theme=="Frappe") {
+    } else if (theme=="Frappe") {
         $rosewater = #f2d5cf;
         $flamingo = #eebebe;
         $pink = #f4b8e4;
@@ -73,9 +73,7 @@
         $base = #303446;
         $mantle = #292c3c;
         $crust = #232634;
-    }
-
-    else if (theme=="Macchiato") {
+    } else if (theme=="Macchiato") {
         $rosewater = #f4dbd6;
         $flamingo = #f0c6c6;
         $pink = #f5bde6;
@@ -102,9 +100,7 @@
         $base = #24273a;
         $mantle = #1e2030;
         $crust = #181926;
-    }
-
-    else if (theme=="Mocha") {
+    } else if (theme=="Mocha") {
         $rosewater = #f5e0dc;
         $flamingo = #f2cdcd;
         $pink = #f5c2e7;
@@ -133,962 +129,543 @@
         $crust = #11111b;
     }
 
-    .dl_body {
-        &,
-        &--textpage {
-            background-color: theme is "Latte" ? $mantle : $base;
-            color: $text;
-        }
-
-        &--redesign {
-            background-color: theme is "Latte" ? $mantle !important : $base !important;
-        }
+    if (accent == "Rosewater") {
+        $accent = $rosewater
+    } else if (accent == "Flamingo") {
+        $accent = $flamingo
+    } else if (accent == "Pink") {
+        $accent = $pink
+    } else if (accent == "Mauve") {
+        $accent = $mauve
+    } else if (accent == "Red") {
+        $accent = $red
+    } else if (accent == "Maroon") {
+        $accent = $maroon
+    } else if (accent == "Peach") {
+        $accent = $peach
+    } else if (accent == "Yellow") {
+        $accent = $yellow
+    } else if (accent == "Green") {
+        $accent = $green
+    } else if (accent == "Teal") {
+        $accent = $teal
+    } else if (accent == "Blue") {
+        $accent = $blue
+    } else if (accent == "Sapphire") {
+        $accent = $sapphire
+    } else if (accent == "Sky") {
+        $accent = $sky
+    } else if (accent == "Lavender") {
+        $accent = $lavender
     }
 
-    /* Header */
+    $accent2 = mix($accent, $text, 60%);
+
+    .dl_body {
+        color: $subtext1;
+    }
+
+    button {
+        color: $text;
+    }
+
+    .text-deepl-blue {
+        color: $accent2;
+    }
+
+    .text-deprecated-grey-darker {
+        color: $subtext1;
+    }
+
+    .bg-white {
+        background-color: $base;
+    }
+
+    .border-dark-7 {
+        border-color: $surface1;
+    }
+
+    .dl_body--redesign {
+        background-color: $mantle !important;
+    }
+
+    [class* = "button--"][class* = "color_primary--"] {
+        border-color: $accent2;
+        background-color: $accent2;
+        color: $accent2;
+    }
+
+    [class* = "button--"][class* = "variant_contained--"],
+    .dark [class* = "button--"][class* = "variant_contained--"] {
+        color: theme is "Latte" ? $base: $crust;
+    }
+
+    [class* = "button--"].variant_text--gozza,
+    .dark [class* = "button--"].variant_text--gozza {
+        background-color: transparent;
+    }
+
+    /////
+
+    .eSEOtericText {
+        color: $overlay1;
+    }
+
     .dl_header {
         &,
         &::before {
-            background-color: theme is "Latte" ? $crust !important : $mantle !important;
-        }
-
-        &_menu_v2 {
-            &__links__item {
-                &,
-                &:visited,
-                &:active,
-                &:focus {
-                    color: $sapphire;
-                }
-
-                &:not(.nohover):hover,
-                &.is-active {
-                    border-bottom: 3px solid $lavender;
-                    color: $lavender;
-                }
-
-                &.dl_translator_link:not(.nohover):hover {
-                    border-bottom: 3px solid $lavender;
-                    color: $sapphire;
-                }
-            }
-
-            &__login_button_simple > button {
-                color: $sapphire;
-
-                &:hover {
-                    color: $lavender;
-                }
-            }
-
-            &__buttons__menu {
-                &,
-                & > button {
-                    &::before,
-                    &::after {
-                        color: $sapphire;
-                    }
-
-                    &:hover::before,
-                    &:hover::after {
-                        color: $lavender;
-                    }
-                }
-            }
-        }
-
-        &Menu {
-            &__freeBadge {
-                background-color: $teal;
-                color: $base;
-            }
-
-            &__proButton {
-                background-color: $blue;
-                color: $base;
-
-                &:hover {
-                    background-color: shade($blue, 25%);
-                    color: $base;
-                }
-            }
+            background-color: $crust !important;
         }
     }
 
-    .lmt__stickyMenubar .dl_header--sticky {
-        transition: unset;
-    }
-
-    /* Main */
-    /* Buttons */
-    .lmt__docTrans-tab-container {
-        [class^="cardButton"] {
-            background-color: theme is "Latte" ? $base: $surface0;
-            border-color: theme is "Latte" ? $surface2: $overlay0;
-
-            [class^="textLower"] {
-                color: $subtext0;
-            }
-
-            [class^="textUpper"] {
-                color: $sapphire;
-            }
-
-            [class^="logo"] {
-                color: $sapphire;
-                stroke: $sapphire;
-                fill: $sapphire;
-            }
-
-            &:not([class*="active"]):hover {
-                background-color: theme is "Latte" ? darken($base, 10%) : lighten($surface0, 10%);
-            }
-        }
-
-        [class*="active"] {
-            [class^="textUpper"] {
-                color: $lavender;
-            }
-
-            [class^="logo"] {
-                color: $lavender;
-                stroke: $lavender;
-                fill: $lavender;
-            }
-
-            [class^="innerLower"] {
-                background-color: $sapphire;
-            }
-        }
-    }
-
-    /* Input containers */
-
-    .lmt--web .lmt__sides_container {
-        border-color: theme is "Latte" ? $surface1 !important : $surface2 !important;
-    }
-
-    /* Giving up */
-
-    .df2930 .integratedLanguageSelectors .lmt--web .lmt__sides_container {
-        &.lmt__sides_container--focus_source .lmt__side_container.lmt__side_container--source .lmt__textarea_container,
-        &.lmt__sides_container--focus_target .lmt__side_container.lmt__side_container--target .lmt__textarea_container {
-            border: 1px solid $sapphire !important;
-        }
-
-        .lmt__side_container.lmt__side_container--source .lmt__textarea_container {
-            border-right: theme is "Latte" ? 1px solid $surface1 !important : 1px solid $surface2 !important;
-            border-top: theme is "Latte" ? 1px solid $surface1 !important : 1px solid $surface2 !important;
-        }
-
-        .lmt__side_container.lmt__side_container--target .lmt__textarea_container {
-            border-top: theme is "Latte" ? 1px solid $surface1 !important : 1px solid $surface2 !important;
-        }
-    }
-
-    .integratedLanguageSelectors {
-        .lmt--web {
-            .lmt__sides_container {
-                .lmt__side_container {
-                    border-color: theme is "Latte" ? $surface1 !important : $surface2 !important;
-
-                    &.lmt__sides_container--focus_source .lmt__side_container.lmt__side_container--source .lmt__textarea_container {
-                        border: 1px solid $sapphire !important;
-                    }
-                }
-
-                .lmt__language_container {
-                    background: theme is "Latte" ? $base : $surface0;
-                }
-            }
-        }
-
-        &.lang_menu_three_columns_small_mode_source .lmt--web .lmt__sides_container .lmt__side_container.lmt__side_container--source,
-        &.lang_menu_three_columns_small_mode_target .lmt--web .lmt__sides_container .lmt__side_container.lmt__side_container--source {
-            border-color: theme is "Latte" ? $surface1 !important: $surface2 !important;
-        }
-    }
-
-    .lmt__language_select__active__title {
-        color: $subtext0;
-    }
-
-    .lmt--web .lmt__language_select > .lmt__language_select__active strong,
-    .dl_body--redesign .lmt--web .lmt__language_select .lmt__language_select__active .lmt__language_select__opener,
-    .lmt--web .lmt__language_select__menu_three_columns_close_button,
-    .lmt__glossary_button .lmt__glossary_button_label {
-        color: $sapphire;
-    }
-
-    .lmt--web .lmt__language_select > .lmt__language_select__active:hover {
-        strong,
-        .lmt__language_select__opener {
-            color: $lavender;
-        }
-    }
-
-    .lmt__glossaryButton__desktop {
-        border-color: theme is "Latte" ? $surface1: $surface2;
-
-        &.switchedOn {
-            border-color: $sapphire;
-        }
-    }
-
-    .lmt__glossary_button .lmt__glossary_button_label:hover {
-        color: $lavender;
-    }
-
-    [class*="label"] {
-        --inlineLabelColor: $base;
-        --background: $overlay0;
-
-        [class*="toggle"] [class*="knob"] {
-            background: $base;
-        }
-
-        &[class*="selected"] {
-            --background: $green;
-            --backgroundHover: darken($green, 20%);
-        }
-    }
-
-    .semitransparent-overlay {
-        background-color: theme is "Latte" ? alpha($mantle, .6) : alpha($base, .6);
-    }
-
-    /* Main containers */
-    .lmt--web .lmt__textarea {
-        &_placeholder_text {
-            color: $overlay1;
-        }
-
-        &.lmt__textarea--inactive {
-            color: $overlay0 !important;
-        }
-
+    .dl_header_menu_v2__links__item {
         &,
-        .lmt__textarea_container textarea {
-            color: $text;
+        &:visited,
+        &:active,
+        &:focus {
+            color: $accent2;
         }
     }
 
-    // .lmt__source_textarea_overlay span.lmt__source_textarea_overlay__text:not([class=*"active"]) {
-    //     color: $overlay0 !important;
-    // }
+    .dl_headerMenu__proButton {
+        background-color: $accent;
+        color: theme is "Latte" ? $base: $crust;
 
-    .dl_body--redesign .lmt--web .lmt__source_textarea__length_marker {
-        color: $subtext0;
-    }
-
-    .integratedLanguageSelectors .dl_translator_page_container .lmt--web .lmt__text .lmt__textarea_container,
-    .integratedLanguageSelectors .lmt--web .lmt__sides_container .lmt__side_container--target .lmt__language_container_switch {
-        border-color: theme is "Latte" ? $surface1 !important : $surface2 !important;
-        background: theme is "Latte" ? $base !important : $surface0 !important;
-        color: $text;
-    }
-
-    .lmt--web .lmt__translations_as_text h4 {
-        color: $subtext1;
-    }
-
-    ul > .lmt__translations_as_text__item button {
-        color: $text;
-    }
-
-    .lmt--showing_alternatives .lmt__translations_as_text::before,
-    .lmt--web .lmt__translations_as_text h4::before {
-        border-top: theme is "Latte" ? 1px solid $surface2 : 1px solid $overlay0;
-    }
-
-    .integratedLanguageSelectors .lmt--web .lmt__sides_container.lmt__sides_container--focus_source .lmt__side_container--source,
-    .integratedLanguageSelectors .lmt--web .lmt__sides_container.lmt__sides_container--focus_target .lmt__side_container--target {
-        border-color: $sapphire !important;
-    }
-
-    .lmt__source_textarea_overlay .lmt__source_textarea_overlay__sentence--active {
-        color: $text;
-        background-color: theme is "Latte" ? $base : $surface0;
-    }
-
-    .lmt--web .lmt__textarea_container .lmt__inner_textarea_container {
-        background: theme is "Latte" ? $base !important : $surface0 !important;
-    }
-
-    .lmt__textarea_container,
-    .lmt__target_toolbar {
-        [class*="button"],
-        button {
-            svg {
-                color: $sapphire;
-            }
-
-            &:hover:enabled,
-            &:active:enabled,
-            &[class*=tabbed] {
-                background-color: theme is "Latte" ? $surface0 : $surface1;
-            }
+        &:hover {
+            background-color: darken($accent, 30%);
+            color: theme is "Latte" ? $base: $crust;
         }
     }
 
-    .lmt--web .lmt__language_container .lmt__language_container_switch {
-        svg > path {
-            stroke: $sapphire;
-        }
+    .dl_header_menu_v2__login_button_simple > button {
+        color: $accent2;
 
-        &:hover svg > path,
-        &:focus svg > path {
-            stroke: $lavender;
+        &:hover {
+            color: $accent;
         }
     }
 
-    .lmt--web .lmt__inner_textarea {
-        &_container .lmt__textarea_dummydiv {
-            background-color: theme is "Latte" ? $base : $surface0;
-        }
-
-        &.lmt__textarea--inactive {
-            color: theme is "Latte" ? $overlay1 : $overlay2;
-        }
-    }
-
-    .lmt--active_translation_request.lmt--active_translation_request--with_target_has_content .lmt__side_container--target .lmt__inner_textarea_container {
-        animation: unset !important;
-        box-shadow: unset !important;
-    }
-
-    #translator-source-clear-button {
-        svg {
-            color: $subtext0;
-        }
-
-        &:hover:enabled {
-            background-color: theme is "Latte" ? darken($base, 5%) : lighten($surface0, 5%);
-
-            svg {
-                color: $sapphire;
-            }
-        }
-    }
-
-    .lmt__glossary_highlight {
-        color: $sapphire;
-    }
-
-    /* Doucment container */
-
-    .lmt__doc {
-        #doc-trans-source-panel[class*="panel"] {
-            background-color: theme is "Latte" ? $base : $surface0;
-            border-color: theme is "Latte" ? $surface1 : $surface2;
-
-            [class*="header"] {
-                background-color: theme is "Latte" ? $base : $surface0;
-                border-color: theme is "Latte" ? $surface1 : $surface2;
-            }
-        }
-
-        #doc-trans-source-panel-content {
-            background-color: theme is "Latte" ? $base : $surface0;
-        }
-
-        .lmt__language_container {
-            background-color: theme is "Latte" ? $base : $surface0;
-        }
-    }
-
-    [class^="docTrans__help_popup"],
-    #doc-trans-target-panel-content {
-        background-color: theme is "Latte" ? $base : $surface0;
-    }
-
-    [class^="docTrans__help_popup"] {
-        button[class*="button"] {
-            color: $base;
-            background-color: $sapphire;
-            border-color: $sapphire;
-
-            &:hover {
-                color: $base;
-                background-color: $lavender;
-                border-color: $lavender;
-            }
-        }
-    }
-
-    #doc-trans-target-panel {
-        border-color: theme is "Latte" ? $surface1 : $surface2;
-        background-color: theme is "Latte" ? $base : $surface0;
-
-        [class^="header"] {
-            border-bottom: theme is "Latte" ? 1px solid $surface1 : 1px solid $surface2;
-        }
-    }
-
-    .dl_help-popup_assist-text {
-        color: $subtext1;
-    }
-
-    /* Dictionary container */
-    .lmt__dict.lmt--is-dict-ready .lmt__dict__inner,
-    .lmt__dict .lmt__dict__empty_state.lmt__dict__placeholder__shown {
-        border: theme is "Latte" ? 1px solid $surface1: 1px solid $surface2;
-        background: theme is "Latte" ? $base: $surface0;
-        color: theme is "Latte" ? $overlay0: $overlay1;
-
-        [class*="buttonContainer"] button {
-            color: $sapphire;
-            stroke: $sapphire;
-
-            &:hover svg {
-                color: $lavender;
-                stroke: $lavender;
-            }
-        }
-    }
-
-    .lmt__dict {
-        .isForeignTerm {
-            .tag_lemma,
-            .tag_lemma a,
-            .tag_s,
-            .tag_s a,
-            .tag_trans_src_context {
-                color: $subtext1;
-            }
-
-            .tag_trans,
-            .tag_trans a,
-            .tag_t,
-            .tag_t a {
-                color: $sapphire;
-            }
-        }
-
-        .tag_lemma a {
-            color: $sapphire
-        }
-
-        .tag_trans,
-        .sep {
-            color: $subtext1;
-        }
-
-        .notascommon,
-        .tag_type,
-        .tag_wordtype,
-        .tag_forms {
-            color: $subtext0;
-        }
-
-        #dictionary-header {
-            border: theme is "Latte" ? 1px solid $surface1 !important : 1px solid $surface2 !important;
-            background: theme is "Latte" ? $base !important : $surface0 !important;
-            color: $sapphire !important;
-        }
-    }
-
-    .stroke-deepl-blue {
-        stroke: $sapphire;
-
-        &[class*="hover"]:hover {
-            stroke: $lavender !important;
-        }
-    }
-
-    /* Languages */
-    .lmt__language_select__menu {
-        > div > div > focus-within:border-blue-chill {
-            border-color: $sapphire !important; // This doesn't work
-        }
-
-        .items-center.gap-3 svg path {
-            stroke: $overlay2 !important;
-        }
-    }
-
-    [class*="form"] [class*="submit"] {
-        background: $sapphire;
-        color: $base;
-
-        &:disabled {
-            background: shade($sapphire, 25%);
-            color: $base;
-        }
-    }
-
-    .lmt__glossary_editor {
-        &_langPairHeadline {
-            color: $text;
-            border-bottom: theme is "Latte" ? 1px solid $overlay0 : 1px solid $overlay1;
-        }
-
-        &Row {
-            color: $text;
-
-            .iconButton {
-                fill: theme is "Latte" ? $overlay2 : $subtext0;
-            }
-        }
-    }
-
-    .lmt__glossary_arrowRightWrapper .lmt__glossary_arrowRight {
-        border-bottom: theme is "Latte" ? 3px solid $overlay2 : 3px solid $subtext0;
-        border-right: theme is "Latte" ? 3px solid $overlay2 : 3px solid $subtext0;
-    }
-
-    .lmt__language_select__menu.lmt__language_select__menu_three_columns {
-        background-color: theme is "Latte" ? $base: $surface0;
-        border: theme is "Latte" ? 1px solid $surface1 : 1px solid $surface2;
-
-        .lmt__language_wrapper .lmt__language_select_column {
-            border-right: theme is "Latte" ? 1px solid $surface1 : 1px solid $surface2;
-
-            button {
-                .tick {
-                    border-bottom: 2px solid $sapphire;
-                    border-right: 2px solid $sapphire;
-                }
-
-                &:hover,
-                &.highlighted {
-                     background-color: alpha($yellow, 0.2);
-                }
-            }
-        }
-    }
-
-    .lmt__language_select_column span {
-        color: $text;
-    }
-
-    .flex-1 {
-        background: theme is "Latte" ? $base: $surface0;
-        color: $subtext0;
-    }
-
-    .integratedLanguageSelectors.lang_menu_three_columns_large_mode_target .lmt--web .lmt__sides_container .lmt__side_container.lmt__side_container--target {
-        border: theme is "Latte" ? 1px solid $surface1 !important : 1px solid $surface2 !important;
-    }
-
-    /* Glossary */
-    [class^="form"] {
-        background: theme is "Latte" ? $base : $surface0;
-    }
-
-    .lmt__glossary_editor {
-        background: theme is "Latte" ? $base : $surface0;
-        border-color: $sapphire;
-
-        & &_subBar_top,
-        & &_subBar_bottom {
-            background-color: theme is "Latte" ? $surface0 : $base;
-        }
-
-        &_subBar_bottom,
-        &_glossaryAddNewWrapper,
-        &_glossaryAddNew {
-            color: $sapphire !important;
-        }
-
-        & &_subBar_top &_glossarySelect &_glossaryNameWrapper &_glossarySelectChevron.lmt__glossary_arrowDown {
-            border-bottom: 2px solid $sapphire;
-            border-right: 2px solid $sapphire;
-        }
-
-        .lmt__glossary_editor_subBar_top .lmt__glossary_editor_glossarySelect .lmt__glossary_editor_glossaryNameWrapper .lmt__glossary_editor_glossaryName {
-            color: $text;
-        }
-
-        &_mainBar {
-            background-color: $sapphire;
-            color: $base;
-
-            .lmt__glossary_editorClose {
-                color: $base;
-            }
-        }
-
-        .lmt__glossary_editor_glossaryMultiple {
-            background-color: theme is "Latte" ? $surface0: $base;
-
-            .lmt__glossary_editor_glossary {
-                &Select .lmt__glossary_editor_glossaryNameWrapper {
-                    .lmt__glossary_editor_glossaryName {
-                        color: $text;
-                    }
-
-                    .lmt__glossary_editor_glossarySelectChevron.lmt__glossary_arrowDown {
-                        border-bottom: 2px solid $text;
-                        border-right: 2px solid $text;
-                    }
-                }
-
-                &AddNewWrapper {
-                    border-left: theme is "Latte" ? 1px solid $overlay0: 1px solid $overlay1;
-
-                    .lmt__glossary_editor_glossaryAddNew,
-                    .lmt__glossary_editor_glossaryDownload {
-                        color: $sapphire;
-                    }
-                }
-            }
-        }
-
-        &RowsWrapper {
-            &::after {
-                background-color: theme is "Latte" ? $base : $surface0;
-            }
-        }
-
-        [class*="form"] {
-            background: theme is "Latte" ? $surface0 : $base;
-        }
-    }
-
-    [class*="wrapper"] [class*="controls"] [class*="input"],
-    [class*="wrapper"] [class*="button"] {
-        --input-background: $surface0;
-        --button-background: $surface0;
-        --button-color: $text;
-        --button-border-color: $surface2;
-        --input-border-color: $surface2;
-        --input-color: $subtext1;
-    }
-
-    [dl-test="glossary-modal"] {
-        background-color: theme is "Latte" ? $base : $surface0;
-        color: $text;
-        border: 1px solid $sapphire;
-
-        [class^="content"] {
-            color: $text;
-
-            .lmt__glossary_acceptButton {
-                background-color: $sapphire;
-                color: $base;
-
-                &:hover {
-                    background-color: $lavender;
-                    color: $base;
-                }
-            }
-        }
-
-        input::placeholder,
-        textarea::placeholder,
-        input:-ms-input-placeholder,
-        textarea:-ms-input-placeholder,
-        input::-moz-placeholder,
-        textarea::-moz-placeholder {
-            color: $overlay1;
-        }
-    }
-
-    .lmt_firstEntry-content {
-        .lmt__glossary_newEntry_inputSource,
-        .lmt__glossary_newEntry_inputTarget,
-        .lmt__glossary_newEntry_langButton {
-            background-color: theme is "Latte" ? $surface1 : $surface2;
-            border-color: theme is "Latte" ? $overlay1 : $overlay2;
-            color: $text;
-
-            &:focus {
-                border-color: $sapphire;
-            }
-        }
-
-        .lmt__glossary_newEntry_langButton {
-            color: $blue;
-
-            .lmt__glossary_arrow {
-                &Right {
-                    color: $subtext0;
-                    stroke: $subtext0;
-                }
-
-                &Down {
-                    border-bottom: 2px solid $subtext0;
-                    border-right: 2px solid $subtext0;
-                }
-            }
-        }
-    }
-
-    [class*="form"] [class*="wrapper"] {
-        [class*="flyout"] {
-            --border: theme is "Latte" ? 1px solid $overlay0: 1px solid $overlay1;
-        }
-
-        [id*="headlessui-listbox-button"] + ul[id*="headlessui-listbox-options"] {
-            background-color: theme is "Latte" ? $surface0: $surface1;
-            --option-icon-color: $sapphire;
-            --option-color: $text;
-
-            [class*="option"][class*="active"] {
-                --option-background: alpha($yellow, 0.2);
-            }
-
-            [class*="option"][class*="unavailable"] {
-                --option-icon-color: $subtext0;
-                --option-color: $overlay2;
-            }
-        }
-    }
-
-    /* Tooltips and pop-ups */
-    .lmt__glossary {
-        &_ad_wrapper {
-            // background: theme is "Latte" ? #fff url(/img/glossary/pro-ad-background-min.jpeg) top right no-repeat: #000 url(/img/glossary/pro-ad-background-min.jpeg) top right no-repeat;
-            // background-size: contain;
-            color: theme is "Latte" ? $text: $base;
-        }
-
-        &_dialog {
-            background: theme is "Latte" ? $surface0 : $surface1;
-            color: $text;
-            border-color: theme is "Latte" ? $surface2 : $overlay0;
-
-            &__line {
-                .choice .option,
-                &--suggestions {
-                    color: $sapphire;
-                }
-            }
-        }
-    }
-
-    .lmt__edit_text_popup {
-        background: theme is "Latte" ? $surface0 : $surface1;
-
-        ul {
-            background: theme is "Latte" ? $surface0 : $surface1;
-        }
-
-        li {
-            color: $text;
-            border-bottom: theme is "Latte" ? 1px solid $overlay0 : 1px solid $overlay1;
-        }
-
-        & &__entry--active {
-            background: alpha($yellow, .2);
-        }
-    }
-
-    [style="display: contents;"] [class*="container"] {
-        [class*="hint"] {
-            border-color: theme is "Latte" ? $overlay0 : $overlay1;
-            background-color: theme is "Latte" ? $surface0 : $surface1;
-
-            path {
-                stroke: $text;
-                color: $text;
-            }
-        }
-    }
-
-    .lmt__glossary_tooltip {
-        background-color: $sapphire;
-        color: $base;
-    }
-
-    /* Quotes */
-    .lmt_quote {
-        &__inner {
-            color: $text;
-            background-color: theme is "Latte" ? $base : $surface0;
-        }
-
-        &__text {
-            color: $text;
-        }
-
-        &__source {
-            color: $text;
-
-            a {
-                color: $sapphire;
-
-                &:hover {
-                    color: $lavender;
-                }
-            }
-        }
-    }
-
-    /* Footer */
-    .eSEOtericText {
-        color: theme is "Latte" ? $overlay0: $overlay1;
-    }
-
-    [class^="footerOuterContainer"] {
-        background-color: theme is "Latte" ? $crust: $mantle;
-
-        [class^="footerContainer"] [class^="footerContentContainer"] [class^="linksContainer"] [class^="linkList"] li {
-            &:not(:first-of-type) a {
-                color: $subtext1 !important;
-            }
-
-            [class^="badgeNew"] {
-                background-color: $teal;
-                color: $base;
-            }
-        }
-    }
-
-    [class^="languageSelector"] {
-        select {
-            color: $subtext1
-        }
-
-        &::after {
-            fill: $subtext1;
-            color: $subtext1;
-            stroke: $subtext1;
-            opacity: 0.7;
-        }
-
-        option {
-            background: theme is "Latte" ? $surface0 : $surface1;
-        }
-    }
-
-    .lmt_quotes_nav_entry {
-        background-color: theme is "Latte" ? $surface1 : $surface2;
-
-        &--active {
-            background-color: $sapphire;
-        }
-    }
-
-    /* Menu */
-    [class^="menuContainer"] {
-        background-color: theme is "Latte" ? $surface0 : $surface1;
-
-        [class^="container"] {
-            div + div {
-                border-color: theme is "Latte" ? $overlay0 : $overlay1;
-            }
-
-            a {
-                color: $text;
-
-                &:hover {
-                    color: $sapphire;
-                }
-            }
-        }
-
-        [class^="mainContent"] + [class^="mainContent"] {
-            border-top: theme is "Latte" ? thin solid $overlay0 : thin solid $overlay1;
-
-            [class*="button"][class*="color_primary"] {
-                color: $sapphire;
-            }
-        }
-
-        [class*="button"].variant_text--gozza {
-            color: $sapphire !important;
-        }
-    }
-
-    [class*="closeButton_dark"] {
+    .dl_header_menu_v2__buttons__menu > button {
         &::before,
         &::after {
-            background-color: $subtext1;
+            color: $accent2;
         }
 
         &:hover {
             &::before,
             &::after {
-                background-color: $sapphire;
+                color: $accent;
             }
         }
     }
 
-    [class*="badge"][class*="blueDark"] {
-        background-color: $sapphire;
-        color: $base;
+    .dl_headerMenu__freeBadge,
+    .dl_headerMenu__alphaBadge {
+        background-color: spin($accent, -40deg);
+        color: theme is "Latte" ? $base: $crust;
     }
 
-    /* Images */
-    if (theme!="Latte") {
-        .dl_header_menu_v2__logo img,
-        .dl_translator_link_container img,
-        .lmt_quote__inner::before,
-        .dl_navigate_away img,
-        [class*="supportedIcons"] img,
-        .lmt_quote__logo_3,
-        /* .lmt__glossary_ad_wrapper */
-        {
-            filter: invert(100%) hue-rotate(180deg);
-        }
+    .dl_header_menu_v2__links__item.dl_translator_link:not(.nohover):hover {
+        color: $accent;
     }
 
-    a {
-        &[aria-label="twitter"] {
-            -webkit-mask-image: url("https://static.deepl.com/img/_optimized/footer/twitterLogo.svghttps://static.deepl.com/img/_optimized/footer/twitterLogo.svg");
-            mask-image: url("https://static.deepl.com/img/_optimized/footer/twitterLogo.svg");
+    .dl_header_menu_v2__links__item:not(.nohover):hover,
+    .dl_header_menu_v2__links__item.is-active {
+        border-bottom-color: $accent;
+        color: $accent;
+    }
+
+    #new-menu-container {
+        [class^ = "menuContainer--"] {
+            background-color: $base;
         }
 
-        &[aria-label="facebook"] {
-            -webkit-mask-image: url("https://static.deepl.com/img/_optimized/footer/facebookLogo.svg");
-            mask-image: url("https://static.deepl.com/img/_optimized/footer/facebookLogo.svg");
+        [class^ = "container--"] a {
+            color: $text;
+
+            &:hover {
+                color: $accent;
+            }
         }
 
-        &[aria-label="linkedin"] {
-            -webkit-mask-image: url("https://static.deepl.com/img/_optimized/footer/linkedinLogo.svg");
-            mask-image: url("https://static.deepl.com/img/_optimized/footer/linkedinLogo.svg");
+        [class^ = "mainContent--"] + [class^ = "mainContent--"] {
+            border-top-color: $surface1;
         }
 
-        &[aria-label="github"] {
-            -webkit-mask-image: url("https://static.deepl.com/img/_optimized/footer/githubLogo.svg");
-            mask-image: url("https://static.deepl.com/img/_optimized/footer/githubLogo.svg");
-        }
-
-        &[aria-label="twitter"],
-        &[aria-label="facebook"],
-        &[aria-label="linkedin"],
-        &[aria-label="github"] {
+        [class^ = "closeButton"] {
+            &::before,
             &::after {
-                content: "";
-                display: block;
-                position: absolute;
-                background: $subtext0;
-                -webkit-mask-size: 100%;
-                -webkit-mask-position: 100%;
-                mask-size: 100%;
-                mask-position: 100%;
-                top: 0;
-                width: 100%;
-                height: 100%;
+                background-color: $subtext0;
+            }
+
+            &:hover {
+                &::before,
+                &::after {
+                    background-color: $accent;
+                }
             }
         }
     }
 
-    [class^="languageSelectorContainer"]::after {
-        content: "";
-        mask-image: url("https://static.deepl.com/img/_optimized/footer/languageLogo.svg");
-        -webkit-mask-image: url("https://static.deepl.com/img/_optimized/footer/languageLogo.svg");
-        display: block;
-        position: relative;
-        background: $subtext0;
-        -webkit-mask-size: 100%;
-        -webkit-mask-position: 100%;
-        mask-size: 24px;
-        mask-position: 0;
-        right: 194px;
-        width: 24px;
-        height: 24px;
-    }
+    /////
 
-    @media only screen and (max-width: 650px) {
-        [class^="languageSelectorContainer"]::after {
-            right: 184px;
+    .lmt__docTrans-tab-container {
+        [class^ = "cardButton--"] {
+            background-color: $base;
+            border-color: $surface1;
+
+            &:not([class* = "active--"]):hover {
+                background-color: $surface0;
+            }
+        }
+
+        [class^ = "textLower--"] {
+            color: $overlay2;
+        }
+
+        [class* = "logo"],
+        [class^ = "textUpper--"] {
+            color: $accent;
+        }
+
+        [class* = "active--"] {
+            [class* = "logo"],
+            [class^ = "textUpper--"] {
+                color: $text;
+            }
+
+            [class^ = "innerLower--"] {
+                background-color: $accent;
+            }
         }
     }
 
-    /* Options */
+    .lmt--web .lmt__sides_container,
+    #doc-trans-source-panel,
+    #doc-trans-target-panel {
+        border-color: $surface1;
+    }
+
+    .integratedLanguageSelectors .lmt--web .lmt__sides_container .lmt__language_container,
+    .dl_body--redesign .lmt--web .lmt__textarea_container,
+    .lmt__doc .lmt__language_container #doc-trans-source-panel,
+    [class^ = "docTrans__help_popup--"],
+    #doc-trans-target-panel {
+        background: $base;
+    }
+
+    #doc-trans-source-panel,
+    #doc-trans-target-panel {
+        [class^ = "header--"] {
+            border-bottom-color: $surface2;
+        }
+    }
+
+    .dl_help-popup_assist-text {
+        color: $overlay1;
+    }
+
+    .dl_body--redesign .lmt--web .lmt__language_select .lmt__language_select__active {
+        color: $subtext0;
+    }
+
+    .lmt--web .lmt__language_select > .lmt__language_select__active {
+        strong {
+            color: $accent2;
+        }
+
+        &:hover {
+            strong,
+            .lmt__language_select__opener {
+                color: $accent;
+            }
+        }
+    }
+
+    .lmt--web .lmt__textarea {
+        &,
+        textarea {
+            color: $text;
+        }
+    }
+
+    .integratedLanguageSelectors .lmt--web .lmt__sides_container .lmt__side_container.lmt__side_container--source .lmt__textarea_container {
+        border-right-color: $surface1;
+        border-top-color: $surface1;
+    }
+
+    .integratedLanguageSelectors .lmt--web .lmt__sides_container .lmt__side_container.lmt__side_container--target .lmt__textarea_container {
+        border-top-color: $surface1 !important;
+    }
+
+
+
+    .dl_body--redesign .lmt--web .lmt__textarea_container.lmt__textarea_container--focus,
+    .integratedLanguageSelectors .lmt--web .lmt__sides_container.lmt__sides_container--focus_source .lmt__side_container.lmt__side_container--source .lmt__textarea_container,
+    .integratedLanguageSelectors .lmt--web .lmt__sides_container.lmt__sides_container--focus_target .lmt__side_container.lmt__side_container--target .lmt__textarea_container {
+        border: 1px solid $accent !important;
+    }
+
+    .lmt--web .lmt__language_container .lmt__language_container_switch {
+        color: $accent2;
+    }
+
+    @keyframes lmt_textarea__busy_animation_ctp {
+        0% { box-shadow: inset 0 0 0px 0 $base, inset 0 0 0px 0px rgba(14, 43, 70, 0.0);
+        }
+
+        10% { box-shadow: inset 0 0 0px 1px $base, inset 0 0 0px 2px rgba(14, 43, 70, 0.5);
+        }
+
+        20% { box-shadow: inset 0 0 1px 3px $base, inset 0 0 1px 4px rgba(14, 43, 70, 0.5),
+        }
+
+        40% { box-shadow: inset 0 0 1px 8px $base, inset 0 0 1px 8px rgba(14, 43, 70, 0.3),
+        }
+    }
+
+    .lmt--active_translation_request.lmt--active_translation_request--with_target_has_content .lmt__side_container--target .lmt__inner_textarea_container {
+        animation: lmt_textarea__busy_animation_ctp 1.5s 2.5s linear infinite;
+        box-shadow: inset 0 0 1px 14px $base, inset 0 0 0px rgba(0, 0, 0, 0);
+    }
+
+    .lmt__toolbar_container {
+        span > button:hover {
+            background-color: alpha($text, .15) !important;
+        }
+    }
+
+    // language selector
+    .lmt__language_select__menu.lmt__language_select__menu_three_columns {
+        &,
+        input {
+            background-color: $base;
+        }
+
+        border-color: $surface1;
+    }
+
+    .lmt__language_select__menu .lmt__dropdown_item_inside_container,
+    .lmt__language_select__menu .lmt__formalitySwitch__menu_items > div > button,
+    .lmt__language_select__menu .lmt__formalitySwitch__menu_items > div > div > button,
+    .lmt__language_select__menu > div > button,
+    .lmt__language_select__menu > div > div > button {
+        color: $subtext1;
+    }
+
+    .lmt__language_select__menu.lmt__language_select__menu_three_columns .lmt__language_wrapper .lmt__language_select_column button:hover,
+    .lmt__language_select__menu.lmt__language_select__menu_three_columns .lmt__language_wrapper .lmt__language_select_column button.highlighted {
+        background-color: alpha($yellow, 0.3);
+    }
+
+    .lmt__language_select__menu.lmt__language_select__menu_three_columns .lmt__language_wrapper .lmt__language_select_column {
+        border-right-color: $surface1;
+    }
+
+    .lmt--web .lmt__language_select__menu_three_columns_close_button {
+        color: $accent;
+    }
+
+    .lmt__language_select__menu.lmt__language_select__menu_three_columns .lmt__language_wrapper .lmt__language_select_column button .tick {
+        border-bottom-color: $accent;
+        border-right-color: $accent;
+    } // glossary
+    .lmt__glossaryButton__desktop {
+        border-color: alpha($text, .12)
+    }
+
+    .lmt__glossary_button .lmt__glossary_button_label:hover {
+        color: $accent;
+    }
+
+    .lmt__glossary_editor_mainBar {
+        background-color: $accent;
+        color: theme is "Latte" ? $base: $crust;
+
+        .lmt__glossary_editorClose {
+            color: theme is "Latte" ? $base: $crust;
+        }
+    }
+
+    [dl-test = "glossary-modal"] {
+        input {
+            background-color: $surface1;
+        }
+
+        &[class* = "modal--"] {
+            background-color: $surface0;
+        }
+
+        [class* = "content--"] {
+            color: $text;
+        }
+    }
+
+    .lmt__glossary_newEntry_langButton {
+        color: $subtext1;
+
+        &:hover {
+            color: $accent;
+        }
+    }
+
+    .lmt_firstEntry-content .lmt__glossary_newEntry_langButton .lmt__glossary_arrowDown {
+        border-bottom-color: $overlay2;
+        border-right-color: $overlay2;
+    }
+
+    .lmt_firstEntry-content .lmt__glossary_newEntry_inputSource,
+    .lmt_firstEntry-content .lmt__glossary_newEntry_inputTarget {
+        border-color: $overlay0;
+        color: $text;
+    }
+
+    .lmt_firstEntry-content .lmt__glossary_newEntry_langButton {
+        border-color: $overlay0;
+        background-color: $surface1;
+    }
+
+    .lmt_firstEntry-content .lmt__glossary_newEntry_inputSource:focus,
+    .lmt_firstEntry-content .lmt__glossary_newEntry_inputTarget:focus {
+        border-color: $accent;
+    }
+
+    .lmt_firstEntry-content .lmt__glossary_acceptButton {
+        color: theme is "Latte" ? $base: $crust;
+    }
+
+    .lmt__glossary_acceptButton.lmt__glossary_acceptButton--disabled {
+        &,
+        &:hover {
+            background-color: alpha($accent, 0.5);
+        }
+    }
+
+    .lmt__language_select__menu {
+        background-color: $surface1;
+    }
+
+    .lmt__glossary_newEntry_langDropdown.lmt__language_select__menu button {
+        color: $text;
+
+        &:hover {
+            background-color: alpha($yellow, 0.2) !important;
+        }
+    }
+
+    .lmt__glossary_newEntry_langDropdown.lmt__language_select__menu button .langName {
+        color: $text !important;
+    }
+
+    .lmt__glossary_newEntry_langDropdown.lmt__language_select__menu button .langCodePair,
+    .lmt__glossary_newEntry_langDropdown.lmt__language_select__menu button .langCodePair .langCode {
+        color: $subtext0;
+    }
+
+    .LanguagePair_arrow {
+        color: $overlay2;
+        stroke: $overlay2;
+    }
+
+    /////
+
+    .combined_app_ad_mobile_and_desktop .dl_ad_pro_container,
+    .dl_pro__banner--2021--wrapper,
+    [class^ = "footerOuterContainer"],
+    .lmt_quote__inner {
+        background-color: $crust;
+    }
+
+    .lmt_quote__inner,
+    .lmt_quote__text,
+    .lmt_quote__source {
+        color: $subtext0;
+    }
+
+    .lmt_quote__source a {
+        color: $accent;
+    }
+
+    // popup
+    .lmt__edit_text_popup {
+        background-color: $surface1;
+    }
+
+    .lmt__edit_text_popup li,
+    .lmt__edit_text_popup .lmt__edit_text_list_item {
+        color: $subtext1;
+        border-color: $surface2;
+    }
+
+    .lmt__edit_text_popup .lmt__edit_text_popup__entry--active {
+        background-color: alpha($yellow, 0.3);
+    }
+
+    // dictionary
+    #lmt__dict_container {
+        [class^ = "content--"] {
+            .tag_lemma a {
+                color: $accent;
+            }
+
+            .sep {
+                color: $text;
+            }
+
+            .tag_trans {
+                color: $subtext1;
+            }
+
+            .notascommon {
+                color: $overlay1;
+            }
+        }
+
+        span > span > button:hover {
+            color: $accent;
+        }
+    }
+
+    // quotes
+    .lmt_quotes_nav_entry {
+        color: $overlay1;
+        background-color: $overlay0;
+    }
+
+    .lmt_quotes_nav_entry--active {
+        color: $accent;
+        background-color: $accent;
+    }
+
+    // footer
+    .dl_footerV2_container {
+        [class* = "linkList--"] li {
+            &:not(:first-of-type) a {
+                color: $accent2 !important; // idk why this isn't coloring
+            }
+
+            [class* = "badge--"] {
+                background-color: spin($accent, -40deg) !important;
+                color: theme is "Latte" ? $base: $crust !important;
+            }
+        }
+    }
+
+    /////
+
+    #dl_menu_logo img,
+    #dl_menu_translator_simplified img,
+    .lmt_quote .lmt_quote__logo,
+    .lmt_quote__inner::before,
+    [class^ = "docTrans__help_popup__container--"] [class^ = "supportedIcons--"] > div,
+    .dl_footerV2_container [class^ = "brandingContainer--"] a > img,
+    [class^ = "socialMediaContainer--"] a > img {
+        filter: invert(100%) hue-rotate(180deg);
+    }
+
+    /////
+
+    // options
     if (quotes) {
         #dl_quotes_container {
             display: none;
@@ -1137,14 +714,14 @@
 
             .lmt__dict__empty_state.lmt__dict__placeholder__shown,
             &.lmt--is-dict-ready .lmt__dict__inner {
-                border-top: theme is "Latte" ? 1px solid $surface1 !important : 1px solid $surface2 !important;
+                border-top: $surface1 !important;
                 border-top-left-radius: 8px !important;
                 border-top-right-radius: 8px !important;
             }
         }
     }
 
-    if (quotes !=footer) {
+    if (quotes != footer) {
         .showSeoText .eSEOtericText {
             margin-bottom: 70px;
         }
@@ -1175,7 +752,7 @@
         }
     }
 
-	if (removeAds) {
+    if (removeAds) {
         #lmt_pro_ad_container {
             display: none;
         }
