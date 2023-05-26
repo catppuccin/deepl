@@ -447,6 +447,10 @@
         }
     }
 
+    .lmt--web .lmt__textarea_placeholder_text {
+        color: $subtext0;
+    }
+
     .lmt--web .lmt__textarea.lmt__textarea--inactive {
         color: $overlay2 !important;
     }
