@@ -17,6 +17,7 @@
 @var checkbox tabs "Remove Tabs" 0
 @var checkbox dictionary "Remove Dictionary" 0
 @var checkbox removeAds "Remove DeepL Ads" 0
+@var checkbox removeGlossaryButton "Remove Glossary Button" 0
 ==/UserStyle== */
 @-moz-document url-prefix("https://www.deepl.com/translator") {
     if (theme == "Latte") {
@@ -917,6 +918,12 @@
 
     if (removeAds) {
         #lmt_pro_ad_container {
+            display: none;
+        }
+    }
+    
+    if (removeGlossaryButton) {
+        .Target--KAb3e {
             display: none;
         }
     }
