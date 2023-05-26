@@ -923,7 +923,7 @@
     }
     
     if (removeGlossaryButton) {
-        .Target--KAb3e {
+        .lmt__glossary_button {
             display: none;
         }
     }
