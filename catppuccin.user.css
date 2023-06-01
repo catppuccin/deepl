@@ -923,7 +923,7 @@
     }
     
     if (removeGlossaryButton) {
-        .lmt__glossary_button {
+        .lmt__glossaryButton__desktop {
             display: none;
         }
     }
