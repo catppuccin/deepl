@@ -452,6 +452,10 @@
         color: $subtext0;
     }
 
+    .dl_body--redesign .lmt--web .lmt__source_textarea__length_marker {
+        color: $subtext0;
+    }
+
     .lmt--web .lmt__textarea.lmt__textarea--inactive {
         color: $overlay2 !important;
     }
